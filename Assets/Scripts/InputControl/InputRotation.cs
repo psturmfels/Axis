@@ -32,26 +32,14 @@ public class InputRotation : MonoBehaviour {
 			rot.SetCurrentRotationSpeed (currentRotationSpeed);
 
 			transform.RotateAround (transform.position, localZAxis, -currentRotationSpeed); 
-//			transform.Rotate (new Vector3 (0.0f, 0.0f, -1.0f * currentRotationSpeed), Space.World);
 		} 
 		else if (Mathf.Abs (currentRotationSpeed) >= rotEps) {
-//			if (Mathf.Sign(currentRotationSpeed - rotationSpeedDecrement * currentTurnAxis) != Mathf.Sign(currentRotationSpeed)) {
-//				currentRotationSpeed = 0.0f;
-//			} else {
-//				currentRotationSpeed -= rotationSpeedDecrement * currentTurnAxis;
-//			}
 			currentRotationSpeed = 0.0f;
 			currentRotationSpeed = Mathf.Min (currentRotationSpeed, maxRotationSpeed);
 			currentRotationSpeed = Mathf.Max (currentRotationSpeed, -maxRotationSpeed);
 			rot.SetCurrentRotationSpeed (currentRotationSpeed);
 
 			transform.RotateAround (transform.position, localZAxis, -currentRotationSpeed); 
-//			transform.Rotate (new Vector3 (0.0f, 0.0f, -1.0f * currentRotationSpeed), Space.World);
 		}
-
-//		float vertAxis = Input.GetAxis("Vertical");
-//		if (Mathf.Abs (vertAxis) >= eps) {
-//			transform.Rotate (Vector3.right * vertAxis * 0.5f);
-//		}
 	}
 }
