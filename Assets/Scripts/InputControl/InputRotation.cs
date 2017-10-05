@@ -11,11 +11,13 @@ public class InputRotation : MonoBehaviour {
 	private float currentTurnAxis = 1.0f;
 	private RotationHolder rot;
 	private InputManager im;
+	private Vector3 localZAxis;
 
 
 	void Start() {
 		rot = GetComponent<RotationHolder> ();
 		im = GetComponent<InputManager> ();
+		localZAxis = transform.forward;
 	}
 
 	void FixedUpdate() {
@@ -29,7 +31,8 @@ public class InputRotation : MonoBehaviour {
 			currentRotationSpeed = Mathf.Max (currentRotationSpeed, -maxRotationSpeed);
 			rot.SetCurrentRotationSpeed (currentRotationSpeed);
 
-			transform.Rotate (new Vector3 (0.0f, 0.0f, -1.0f * currentRotationSpeed), Space.World);
+			transform.RotateAround (transform.position, localZAxis, -currentRotationSpeed); 
+//			transform.Rotate (new Vector3 (0.0f, 0.0f, -1.0f * currentRotationSpeed), Space.World);
 		} 
 		else if (Mathf.Abs (currentRotationSpeed) >= rotEps) {
 //			if (Mathf.Sign(currentRotationSpeed - rotationSpeedDecrement * currentTurnAxis) != Mathf.Sign(currentRotationSpeed)) {
@@ -42,7 +45,8 @@ public class InputRotation : MonoBehaviour {
 			currentRotationSpeed = Mathf.Max (currentRotationSpeed, -maxRotationSpeed);
 			rot.SetCurrentRotationSpeed (currentRotationSpeed);
 
-			transform.Rotate (new Vector3 (0.0f, 0.0f, -1.0f * currentRotationSpeed), Space.World);
+			transform.RotateAround (transform.position, localZAxis, -currentRotationSpeed); 
+//			transform.Rotate (new Vector3 (0.0f, 0.0f, -1.0f * currentRotationSpeed), Space.World);
 		}
 
 //		float vertAxis = Input.GetAxis("Vertical");

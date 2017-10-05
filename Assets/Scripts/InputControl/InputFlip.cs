@@ -8,7 +8,7 @@ public class InputFlip : MonoBehaviour {
 	private bool isFlipping = false;
 	private bool canFlip = true;
 	private float destinationX = 180.0f;
-	private float tiltIncrement = 15.0f;
+	private float tiltIncrement = 20.0f;
 	private float xTilt = 0.0f;
 
 	void Start () {
@@ -28,10 +28,10 @@ public class InputFlip : MonoBehaviour {
 				xTilt = 0.0f;
 				isFlipping = false;
 				im.SetInputEnabled (true);
+				transform.RotateAround (transform.position, transform.up, 180.0f);
 				Invoke ("EnableFlip", 0.5f);
-//				transform.Rotate (new Vector3 (0.0f, 0.0f, transform.rotation.z + 180.0f));
-			} else {
-				transform.Rotate (new Vector3(0.0f, 0.0f, 1.0f) * tiltIncrement, Space.World);
+			} else if (!rt.GetIsEnabled ()) {
+				transform.RotateAround (transform.position, transform.right, -tiltIncrement);
 				xTilt = xTilt + tiltIncrement;
 			}
 		}

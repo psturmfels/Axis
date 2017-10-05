@@ -6,7 +6,6 @@ public class InputForwardMotion : MonoBehaviour {
 	private Rigidbody rb;
 	private InputManager im;
 	public float speed;
-	private bool shouldInputForce = false;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();	
