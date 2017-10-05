@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputRotation : MonoBehaviour {
-	private float eps = 0.5f;
-	private float maxRotationSpeed = 6.0f;
-	private float rotationSpeedIncrement = 1.0f;
-	private float rotationSpeedDecrement = 0.4f;
+	private float rotEps = 0.6f;
+	private float maxRotationSpeed = 8.0f;
+	private float rotationSpeedIncrement = 0.8f;
+//	private float rotationSpeedDecrement = 1.5f;
 	private float currentRotationSpeed = 0.0f;
 	private float currentTurnAxis = 1.0f;
 	private RotationHolder rot;
+	private InputManager im;
+
 
 	void Start() {
 		rot = GetComponent<RotationHolder> ();
+		im = GetComponent<InputManager> ();
 	}
 
 	void FixedUpdate() {
 		float turnAxis = Input.GetAxis ("Horizontal");
-
-		if (Mathf.Abs (turnAxis) >= eps) {
+		if (im.GetInputEnabled () && Mathf.Abs (turnAxis) >= 0.1f) {
 			currentTurnAxis = Mathf.Sign (turnAxis);
 			rot.SetCurrentTurnAxis (currentTurnAxis);
 
@@ -29,8 +31,13 @@ public class InputRotation : MonoBehaviour {
 
 			transform.Rotate (new Vector3 (0.0f, 0.0f, -1.0f * currentRotationSpeed), Space.World);
 		} 
-		else if (Mathf.Abs (currentRotationSpeed) >= eps) {
-			currentRotationSpeed -= rotationSpeedDecrement * currentTurnAxis;
+		else if (Mathf.Abs (currentRotationSpeed) >= rotEps) {
+//			if (Mathf.Sign(currentRotationSpeed - rotationSpeedDecrement * currentTurnAxis) != Mathf.Sign(currentRotationSpeed)) {
+//				currentRotationSpeed = 0.0f;
+//			} else {
+//				currentRotationSpeed -= rotationSpeedDecrement * currentTurnAxis;
+//			}
+			currentRotationSpeed = 0.0f;
 			currentRotationSpeed = Mathf.Min (currentRotationSpeed, maxRotationSpeed);
 			currentRotationSpeed = Mathf.Max (currentRotationSpeed, -maxRotationSpeed);
 			rot.SetCurrentRotationSpeed (currentRotationSpeed);

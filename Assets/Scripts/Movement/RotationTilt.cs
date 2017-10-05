@@ -6,20 +6,20 @@ public class RotationTilt : MonoBehaviour {
 	private RotationHolder rot;
 	private float tiltIncrement = 1.0f;
 	private float tiltDecrement = 2.0f;
-	private float eps = 0.5f;
+	private float eps = 0.6f;
 	private float maxTilt = 20.0f;
-	private float xTilt = 0.0f;
 	private float yTilt = 0.0f;
 
 
 	void Start () {
 		rot = GetComponent <RotationHolder> ();
 	}
+
+	public float GetYTilt() {
+		return yTilt;
+	}
 	
 	void FixedUpdate () {
-		Vector3 currentRotation = transform.rotation.eulerAngles;
-
-
 		if (Mathf.Abs(rot.GetCurrentRotationSpeed ()) >= eps) {
 			if (rot.GetCurrentRotationSpeed () < 0.0f) {
 				if (yTilt < maxTilt) {
