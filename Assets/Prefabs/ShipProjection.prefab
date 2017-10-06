@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 4400348775196078}
   - component: {fileID: 33916909271614250}
   - component: {fileID: 23646287191364326}
-  - component: {fileID: 114184795074046538}
   - component: {fileID: 114934336999487880}
   m_Layer: 0
   m_Name: CircleIndicator
@@ -186,19 +185,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 4044805d86213467d9dcef812efdc2b9, type: 3}
---- !u!114 &114184795074046538
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411212380506440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c000d272b6c2343da924a7583d5804ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  growDirections: {x: 0, y: 0, z: 0}
-  growSpeeds: {x: 0, y: 0, z: 0}
 --- !u!114 &114380234615510056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -235,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growDirections: {x: 1, y: 0, z: 1}
   growSpeeds: {x: 0.05, y: 0, z: 0.05}
+  maxDims: {x: 0, y: 0, z: 0}
 --- !u!114 &114991112078781694
 MonoBehaviour:
   m_ObjectHideFlags: 1

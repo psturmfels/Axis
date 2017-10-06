@@ -5,13 +5,17 @@ using UnityEngine;
 public class ContinuousGrow : MonoBehaviour {
 	public Vector3 growDirections;
 	public Vector3 growSpeeds;
-
-	// Use this for initialization
-	void Start () {
-	}
+	public Vector3 maxDims = Vector3.zero;
 	
-	// Update is called once per frame
 	void FixedUpdate () {
+		if (maxDims != Vector3.zero) {
+			if (transform.localScale.x > maxDims.x ||
+				transform.localScale.y > maxDims.y ||
+			    transform.localScale.z > maxDims.z) {
+				maxDims = Vector3.zero;
+				Destroy (gameObject);
+			}
+		}
 		transform.localScale += growSpeeds;
 	}
 }
