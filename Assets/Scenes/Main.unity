@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 87469308}
   - component: {fileID: 87469307}
   - component: {fileID: 87469306}
+  - component: {fileID: 87469311}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -262,6 +263,17 @@ Transform:
   m_Father: {fileID: 1050964428}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &87469311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87469305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09568108305a44bec8a30c51875a1a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &290535474
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,6 +443,8 @@ GameObject:
   - component: {fileID: 804913443}
   - component: {fileID: 804913444}
   - component: {fileID: 804913445}
+  - component: {fileID: 804913446}
+  - component: {fileID: 804913447}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Player
@@ -615,6 +629,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationIncrementAbs: 5
+--- !u!114 &804913446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804913432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d4359ade33b413a8752ff58c6ce919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &804913447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804913432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee03b6fe80f9c4373938e3b7fcfc7186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1045991445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1056,7 @@ GameObject:
   - component: {fileID: 1446563318}
   m_Layer: 0
   m_Name: RedCube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
