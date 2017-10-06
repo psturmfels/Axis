@@ -19,6 +19,7 @@ public class CircleAttack : MonoBehaviour {
 		cg.growSpeeds = growSpeeds * attackSpeedModifier;
 		circleAttackObject.transform.rotation = Quaternion.Euler (Vector3.right * 90.0f);
 		circleAttackObject.transform.localScale = new Vector3 (10.0f, 60.0f, 10.0f);
+		circleAttackObject.transform.position = new Vector3 (transform.position.x, transform.position.y, -250.0f) + transform.up.normalized * 80.0f;
 		circleAttackObject.GetComponent<SnapToObject> ().target = gameObject;
 	}
 }
