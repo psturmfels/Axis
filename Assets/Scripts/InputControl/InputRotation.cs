@@ -6,7 +6,6 @@ public class InputRotation : MonoBehaviour {
 	private float rotEps = 0.6f;
 	private float maxRotationSpeed = 8.0f;
 	private float rotationSpeedIncrement = 0.8f;
-//	private float rotationSpeedDecrement = 1.5f;
 	private float currentRotationSpeed = 0.0f;
 	private float currentTurnAxis = 1.0f;
 	private RotationHolder rot;
@@ -35,8 +34,6 @@ public class InputRotation : MonoBehaviour {
 		} 
 		else if (Mathf.Abs (currentRotationSpeed) >= rotEps) {
 			currentRotationSpeed = 0.0f;
-			currentRotationSpeed = Mathf.Min (currentRotationSpeed, maxRotationSpeed);
-			currentRotationSpeed = Mathf.Max (currentRotationSpeed, -maxRotationSpeed);
 			rot.SetCurrentRotationSpeed (currentRotationSpeed);
 
 			transform.RotateAround (transform.position, localZAxis, -currentRotationSpeed); 

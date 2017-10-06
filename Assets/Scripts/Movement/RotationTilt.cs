@@ -35,22 +35,26 @@ public class RotationTilt : MonoBehaviour {
 			if (rot.GetCurrentRotationSpeed () < 0.0f) {
 				if (yTilt < maxTilt) {
 					isEnabled = true;
-					transform.Rotate (Vector3.up * tiltIncrement);
+					transform.RotateAround (transform.position, transform.up, tiltIncrement);
+//					transform.Rotate (Vector3.up * tiltIncrement);
 					yTilt += tiltIncrement;
 				}
 			} else if (rot.GetCurrentRotationSpeed () > 0.0f) {
 				if (yTilt > -maxTilt) {
 					isEnabled = true;
-					transform.Rotate (Vector3.down * tiltIncrement);
+//					transform.Rotate (Vector3.down * tiltIncrement);
+					transform.RotateAround (transform.position, transform.up, -tiltIncrement);
 					yTilt -= tiltIncrement;
 				}
 			}
 		} else {
 			if (yTilt > tiltDecrement) {
-				transform.Rotate (Vector3.down * tiltDecrement);
+				transform.RotateAround (transform.position, transform.up, -tiltDecrement);
+//				transform.Rotate (Vector3.down * tiltDecrement);
 				yTilt -= tiltDecrement;
 			} else if (yTilt < -tiltDecrement) {
-				transform.Rotate (Vector3.up * tiltDecrement);
+				transform.RotateAround (transform.position, transform.up, tiltDecrement);
+//				transform.Rotate (Vector3.up * tiltDecrement);
 				yTilt += tiltDecrement;
 			}
 			else if (isEnabled) {

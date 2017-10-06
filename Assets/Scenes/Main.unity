@@ -614,7 +614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655933846bb5d47839e872093b50f603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redCube: {fileID: 1446563308}
   rotationIncrementAbs: 5
 --- !u!1 &1045991445
 GameObject:
@@ -1014,6 +1013,11 @@ GameObject:
   - component: {fileID: 1446563310}
   - component: {fileID: 1446563309}
   - component: {fileID: 1446563313}
+  - component: {fileID: 1446563314}
+  - component: {fileID: 1446563315}
+  - component: {fileID: 1446563317}
+  - component: {fileID: 1446563316}
+  - component: {fileID: 1446563318}
   m_Layer: 0
   m_Name: RedCube
   m_TagString: Untagged
@@ -1100,6 +1104,65 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &1446563314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1446563308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f68ca6ba4a264663888af4c3413cade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 804913435}
+--- !u!114 &1446563315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1446563308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655933846bb5d47839e872093b50f603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationIncrementAbs: 2
+--- !u!114 &1446563316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1446563308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29da0fa11b574b54ad9cca4e46c47f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1446563317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1446563308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e32ea187ce60c409caa8b0ad72809770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1446563318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1446563308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe61bc9cbe6444c68557f5d7e7bb496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3000
+  forwardDirection: {x: 0, y: 1, z: 0}
 --- !u!1 &1782396895
 GameObject:
   m_ObjectHideFlags: 0
