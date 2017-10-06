@@ -22,6 +22,13 @@ public class RotationTilt : MonoBehaviour {
 	public bool GetIsEnabled() {
 		return isEnabled;
 	}
+
+	public void RemoveTilt() {
+		isEnabled = false;
+		float zRotation = transform.rotation.eulerAngles.z; 
+		transform.rotation = Quaternion.Euler (Quaternion.identity.eulerAngles.x, Quaternion.identity.eulerAngles.y, zRotation);
+		yTilt = 0.0f;
+	}
 	
 	void FixedUpdate () {
 		if (Mathf.Abs(rot.GetCurrentRotationSpeed ()) >= eps) {
@@ -47,10 +54,7 @@ public class RotationTilt : MonoBehaviour {
 				yTilt += tiltDecrement;
 			}
 			else if (isEnabled) {
-				isEnabled = false;
-				float zRotation = transform.rotation.eulerAngles.z; 
-				transform.rotation = Quaternion.Euler (Quaternion.identity.eulerAngles.x, Quaternion.identity.eulerAngles.y, zRotation);
-				yTilt = 0.0f;
+				RemoveTilt ();
 			}
 		}
 	}

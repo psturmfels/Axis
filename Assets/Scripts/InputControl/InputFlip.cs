@@ -30,7 +30,7 @@ public class InputFlip : MonoBehaviour {
 				im.SetInputEnabled (true);
 				transform.RotateAround (transform.position, transform.up, 180.0f);
 				Invoke ("EnableFlip", 0.5f);
-			} else if (!rt.GetIsEnabled ()) {
+			} else {
 				transform.RotateAround (transform.position, transform.right, -tiltIncrement);
 				xTilt = xTilt + tiltIncrement;
 			}
@@ -41,6 +41,7 @@ public class InputFlip : MonoBehaviour {
 		canFlip = false;
 		isFlipping = true;
 		im.SetInputEnabled (false);
+		rt.RemoveTilt ();
 	}
 
 	void EnableFlip () {
