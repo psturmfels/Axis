@@ -5,8 +5,14 @@ using UnityEngine;
 public class CircleAttack : MonoBehaviour {
 	public GameObject CircleAttackObject;
 	private float attackSpeedModifier = 4.0f;
+	private RegisterEnemyContact rec;
+
+	void Start() { 
+		rec = GetComponent<RegisterEnemyContact> ();
+	}
 
 	public void StartCircleAttack(Vector3 maxDims, Vector3 growSpeeds) {
+		rec.EnableInvincible ();
 		GameObject circleAttackObject = Instantiate (CircleAttackObject) as GameObject;
 		ContinuousGrow cg = circleAttackObject.GetComponent<ContinuousGrow> ();
 		cg.maxDims = maxDims;

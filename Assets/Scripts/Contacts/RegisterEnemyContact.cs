@@ -22,12 +22,16 @@ public class RegisterEnemyContact : MonoBehaviour {
 		ttc.ChangeColor (Color.red);
 		ttc.ReturnToOriginalColor();
 		ScreenShakeEffect.Shake ();
-		isInvincible = true;
-		Invoke ("DisableInvincible", invincibleDuration);
+		EnableInvincible ();
 	}
 
 	void DisableInvincible() {
 		isInvincible = false;
+	}
+
+	public void EnableInvincible() {
+		isInvincible = true;
+		Invoke ("DisableInvincible", invincibleDuration);
 	}
 
 	void OnCollisionEnter(Collision coll) {
