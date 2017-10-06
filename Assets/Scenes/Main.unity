@@ -614,7 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnKey: 32
-  ghostShipPrefab: {fileID: 1378586060031416, guid: 0be40cbc8498e46e7adf1218665d7d13,
+  ghostShipPrefab: {fileID: 1404432171620902, guid: c31b83e5497ca4408a60c7bf6f8c96be,
     type: 2}
   reloadTime: 0.5
 --- !u!114 &804913445
@@ -1060,7 +1060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1446563309
 MeshRenderer:
   m_ObjectHideFlags: 0

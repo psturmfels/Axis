@@ -8,6 +8,7 @@ TagManager:
   - Projection
   - LevelContainer
   - Enemy
+  - AttackIndicator
   layers:
   - Default
   - TransparentFX
