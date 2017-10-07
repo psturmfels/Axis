@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyDie : MonoBehaviour {
 	private SpawnEnemy se; 
-	private int index;
+	private int index = -1;
 
 	public void SetIndex(int newIndex) {
 		index = newIndex;
@@ -15,7 +15,10 @@ public class EnemyDie : MonoBehaviour {
 	}
 	
 	public void Die() {
-		se.RegisterDeathAtIndex (index);
-		Destroy (gameObject);
+		if (index >= 0) {
+			se.RegisterDeathAtIndex (index);
+			index = -1;
+			Destroy (gameObject);
+		}
 	}
 }

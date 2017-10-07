@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour {
 	private GameObject[] spawnedEnemies;
-	private int currentNumEnemies;
+	public int currentNumEnemies;
 	private Queue<int> availableIndices;
 	private float minSpawnWait = 1.0f;
 	private float maxSpawnWait = 10.0f;
