@@ -321,7 +321,7 @@ Prefab:
       objectReference: {fileID: 804913435}
     - target: {fileID: 1023692914458244, guid: fe103eaf643204b438c367fbe91bd391, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe103eaf643204b438c367fbe91bd391, type: 2}
@@ -340,6 +340,7 @@ GameObject:
   - component: {fileID: 290535477}
   - component: {fileID: 290535476}
   - component: {fileID: 290535475}
+  - component: {fileID: 290535482}
   m_Layer: 0
   m_Name: Trisolaris
   m_TagString: GravityItem
@@ -475,6 +476,17 @@ Transform:
   m_Father: {fileID: 1183523717}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &290535482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 290535474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92569d3a39e4c44639a116049e8853f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &305658533
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &804913433
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -971,6 +983,7 @@ GameObject:
   - component: {fileID: 1045991446}
   - component: {fileID: 1045991451}
   - component: {fileID: 1045991452}
+  - component: {fileID: 1045991453}
   m_Layer: 0
   m_Name: Sphere1
   m_TagString: GravityItem
@@ -1106,6 +1119,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1045991453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1045991445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92569d3a39e4c44639a116049e8853f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1050964427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,6 +1176,7 @@ GameObject:
   - component: {fileID: 1077441507}
   - component: {fileID: 1077441506}
   - component: {fileID: 1077441512}
+  - component: {fileID: 1077441513}
   m_Layer: 0
   m_Name: Sphere2
   m_TagString: GravityItem
@@ -1287,6 +1312,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1077441513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1077441505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92569d3a39e4c44639a116049e8853f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1088794435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1487,7 @@ GameObject:
   - component: {fileID: 1782396897}
   - component: {fileID: 1782396896}
   - component: {fileID: 1782396902}
+  - component: {fileID: 1782396903}
   m_Layer: 0
   m_Name: Sphere3
   m_TagString: GravityItem
@@ -1586,6 +1623,17 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1782396903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1782396895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92569d3a39e4c44639a116049e8853f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1796180076
 GameObject:
   m_ObjectHideFlags: 0

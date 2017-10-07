@@ -12,7 +12,6 @@ public class GravitySource : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		rb.velocity = initialVelocity;
-		Time.timeScale = 1.0f;
 	}
 	
 	// Update is called once per frame
