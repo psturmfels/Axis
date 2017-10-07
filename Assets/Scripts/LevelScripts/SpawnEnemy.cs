@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnEnemy : MonoBehaviour {
 	private GameObject[] spawnedEnemies;
@@ -12,11 +13,13 @@ public class SpawnEnemy : MonoBehaviour {
 	private float spawnXMin = 4500.0f;
 	private float spawnYMax = 3000.0f;
 	private float spawnYMin = 2500.0f;
+	private int enemiesKilled = 0;
 
 	public int maxEnemies;
 	public GameObject[] enemyPrefabs;
 	public float[] enemyProbabilities;
-	
+	public Text ScoreCountText;
+
 
 	void Start () {
 		spawnedEnemies = new GameObject[maxEnemies];
@@ -65,6 +68,8 @@ public class SpawnEnemy : MonoBehaviour {
 	}
 
 	public void RegisterDeathAtIndex(int deathIndex) {
+		enemiesKilled += 1;
+		ScoreCountText.text = enemiesKilled.ToString ();
 		spawnedEnemies [deathIndex] = null;
 		currentNumEnemies -= 1;
 		availableIndices.Enqueue (deathIndex);
