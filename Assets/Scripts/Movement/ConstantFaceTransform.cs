@@ -8,6 +8,9 @@ public class ConstantFaceTransform : MonoBehaviour {
 
 	void Start() {
 		ttp = GetComponent<TurnTowardPoint> ();
+		if (target == null) {
+			target = GameObject.FindGameObjectWithTag ("Player").transform;
+		}
 	}
 
 	void FixedUpdate() {

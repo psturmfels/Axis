@@ -13,6 +13,6 @@ public class KillEnemyOnContact : MonoBehaviour {
 	}
 
 	void KillEnemy(GameObject Enemy) {
-		Destroy (Enemy);
+		Enemy.GetComponent<EnemyDie> ().Die ();
 	}
 }

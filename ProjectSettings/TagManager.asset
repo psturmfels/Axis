@@ -9,6 +9,7 @@ TagManager:
   - LevelContainer
   - Enemy
   - AttackIndicator
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Attack
   - Enemy
   - Player
-  - 
+  - Planet
   - 
   - 
   - 

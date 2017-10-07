@@ -15,7 +15,7 @@ public class TurnTowardPoint : MonoBehaviour {
 		return isTurning;
 	}
 
-	void Start() {
+	void Awake() {
 		rot = GetComponent<RotationHolder> ();
 		localZAxis = transform.forward;
 	}
