@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class KillEnemyOnContact : MonoBehaviour {
+	public bool isEnabled = true;
+
 	void OnCollisionEnter(Collision coll) {
 		GameObject other = coll.gameObject;
-		if (other.gameObject.CompareTag ("Enemy")) {
+		if (isEnabled && other.gameObject.CompareTag ("Enemy")) {
 			KillEnemy (other.gameObject);
 		}
 	}

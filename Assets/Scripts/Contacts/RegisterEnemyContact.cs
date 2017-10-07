@@ -8,11 +8,13 @@ public class RegisterEnemyContact : MonoBehaviour {
 	private bool isInvincible = false;
 	private float knockbackStrength = 8000.0f;
 	private Rigidbody rb;
+	private Health healthObject;
 
 	// Use this for initialization
 	void Start () {
 		ttc = GetComponent<TurnToColor> ();
 		rb = GetComponent<Rigidbody> ();
+		healthObject = GetComponent<Health> ();
 	}
 
 	void WasHit(GameObject Enemy) {
@@ -25,13 +27,17 @@ public class RegisterEnemyContact : MonoBehaviour {
 		EnableInvincible ();
 	}
 
-	void DisableInvincible() {
+	public void DisableInvincible() {
 		isInvincible = false;
 	}
 
 	public void EnableInvincible() {
 		isInvincible = true;
 		Invoke ("DisableInvincible", invincibleDuration);
+	}
+
+	public void EnableInvinciblePermanent() {
+		isInvincible = true;
 	}
 
 	void OnCollisionEnter(Collision coll) {

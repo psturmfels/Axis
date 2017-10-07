@@ -21,13 +21,11 @@ GameObject:
   - component: {fileID: 4413538697660444}
   - component: {fileID: 33736666612692068}
   - component: {fileID: 23781630184105218}
-  - component: {fileID: 114695209045919984}
   - component: {fileID: 64250190020100146}
-  - component: {fileID: 114398707274596924}
   - component: {fileID: 114977938842597768}
-  - component: {fileID: 114551254692910648}
+  - component: {fileID: 114374581638384108}
   m_Layer: 8
-  m_Name: CircleAttackObject
+  m_Name: CircleAttackResidual
   m_TagString: AttackIndicator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +97,7 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: c70ab68c767f149f5b35d881a47cc181, type: 3}
---- !u!114 &114398707274596924
+--- !u!114 &114374581638384108
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -107,38 +105,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1569866746488140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd618da6f7dc94e52b5d23ac030c3787, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ae2dff73325f473bbd7aa218987a60e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
---- !u!114 &114551254692910648
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1569866746488140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b7e7d56944c4866bedad57c34fe89f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circleResidual: {fileID: 1569866746488140, guid: 1281ab29d91744e7889a175558242380,
-    type: 2}
-  maxDims: {x: 0, y: 0, z: 0}
---- !u!114 &114695209045919984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1569866746488140}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c000d272b6c2343da924a7583d5804ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  growDirections: {x: 1, y: 0, z: 1}
-  growSpeeds: {x: 4, y: 0, z: 4}
-  maxDims: {x: 150, y: 60, z: 150}
+  alphaFadeRate: 0.1
 --- !u!114 &114977938842597768
 MonoBehaviour:
   m_ObjectHideFlags: 1

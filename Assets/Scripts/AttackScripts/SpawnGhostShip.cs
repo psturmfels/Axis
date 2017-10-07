@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnGhostShip : MonoBehaviour {
 	public KeyCode spawnKey;
+	public KeyCode dashKey; 
 	public GameObject ghostShipPrefab;
 	public float reloadTime = 0.0f;
 
@@ -12,12 +13,14 @@ public class SpawnGhostShip : MonoBehaviour {
 	private bool canSpawn;
 	private GameObject currentSpawnedShip = null;
 	private CircleAttack ca;
+	private DashAttack da;
 
 	// Use this for initialization
 	void Start () {
 		im = GetComponent<InputManager> ();
 		rb = GetComponent<Rigidbody> ();
 		ca = GetComponent<CircleAttack> ();
+		da = GetComponent<DashAttack> ();
 		canSpawn = true;
 	}
 
@@ -29,6 +32,8 @@ public class SpawnGhostShip : MonoBehaviour {
 			} else if (currentSpawnedShip != null) {
 				TeleportToProjection ();
 			}
+		} else if (im.GetInputEnabled() && Input.GetKeyDown(dashKey) && currentSpawnedShip != null) {
+			da.StartDash (currentSpawnedShip);
 		}
 	}
 
