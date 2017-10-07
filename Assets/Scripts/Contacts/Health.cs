@@ -7,9 +7,14 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour {
 	public Scrollbar healthBar;
 	public bool isPlayer = true;
+	public bool shouldRegenerate = true;
+	public float regenerateRate = 0.001f;
 	float currentHealth = 1.0f;
 
 	void Update () {
+		if (shouldRegenerate) {
+			currentHealth = Mathf.Min (currentHealth + regenerateRate, 1.0f);
+		}
 		healthBar.size = currentHealth;
 	}
 

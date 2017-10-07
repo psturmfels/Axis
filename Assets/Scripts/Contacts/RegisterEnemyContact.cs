@@ -9,6 +9,7 @@ public class RegisterEnemyContact : MonoBehaviour {
 	private float knockbackStrength = 8000.0f;
 	private Rigidbody rb;
 	private Health healthObject;
+	private float defaultEnemyDamage = 0.30f;
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +21,11 @@ public class RegisterEnemyContact : MonoBehaviour {
 	void WasHit(GameObject Enemy) {
 		Vector3 posDiff = transform.position - Enemy.transform.position;
 		rb.AddForce (posDiff.normalized * knockbackStrength, ForceMode.Impulse);
+		healthObject.TakeDamage (defaultEnemyDamage);
 
 		ttc.ChangeColor (Color.red);
 		ttc.ReturnToOriginalColor();
+
 		ScreenShakeEffect.Shake ();
 		EnableInvincible ();
 	}
