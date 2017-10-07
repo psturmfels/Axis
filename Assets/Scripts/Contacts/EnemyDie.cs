@@ -14,11 +14,21 @@ public class EnemyDie : MonoBehaviour {
 		se = GameObject.FindGameObjectWithTag ("EnemySpawner").GetComponent<SpawnEnemy> ();
 	}
 	
-	public void Die() {
+	public void Die(Vector3 explosionPosition) {
 		if (index >= 0) {
+			TriangleExplosion te = gameObject.AddComponent<TriangleExplosion>();
+			DisableCollider ();
+
+			StartCoroutine(te.SplitMesh(true, explosionPosition));
+
 			se.RegisterDeathAtIndex (index);
-			index = -1;
-			Destroy (gameObject);
+			index = -1;		}
+	}
+
+	private void DisableCollider() {
+		if (GetComponent<BoxCollider> () != null) {
+			GetComponent<BoxCollider> ().enabled = false;
+
 		}
 	}
 }

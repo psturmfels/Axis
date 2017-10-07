@@ -8,11 +8,15 @@ public class KillEnemyOnContact : MonoBehaviour {
 	void OnCollisionEnter(Collision coll) {
 		GameObject other = coll.gameObject;
 		if (isEnabled && other.gameObject.CompareTag ("Enemy")) {
-			KillEnemy (other.gameObject);
+			if (coll.contacts.Length > 0) {
+				KillEnemy (other.gameObject, coll.contacts[0].point);
+			} else {
+				KillEnemy (other.gameObject, transform.position);
+			}
 		}
 	}
 
-	void KillEnemy(GameObject Enemy) {
-		Enemy.GetComponent<EnemyDie> ().Die ();
+	void KillEnemy(GameObject Enemy, Vector3 explosionPosition) {
+		Enemy.GetComponent<EnemyDie> ().Die (explosionPosition);
 	}
 }
