@@ -1162,6 +1162,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1050964428}
+  - component: {fileID: 1050964429}
   m_Layer: 0
   m_Name: LevelStuff
   m_TagString: Untagged
@@ -1188,6 +1189,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1050964429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1050964427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a7163ec09bf4e269c460f1f1cded22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1077441505
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,7 +1870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentNumEnemies: 0
-  maxEnemies: 10
+  maxEnemies: 20
   enemyPrefabs:
   - {fileID: 1023692914458244, guid: fe103eaf643204b438c367fbe91bd391, type: 2}
   enemyProbabilities:

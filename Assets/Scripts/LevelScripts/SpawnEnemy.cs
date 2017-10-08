@@ -8,7 +8,7 @@ public class SpawnEnemy : MonoBehaviour {
 	public int currentNumEnemies;
 	private Queue<int> availableIndices;
 	private float minSpawnWait = 1.0f;
-	private float maxSpawnWait = 10.0f;
+	private float maxSpawnWait = 5.0f;
 	private float spawnXMax = 5000.0f;
 	private float spawnXMin = 4500.0f;
 	private float spawnYMax = 3000.0f;
