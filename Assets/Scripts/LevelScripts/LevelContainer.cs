@@ -37,11 +37,11 @@ public class LevelContainer : MonoBehaviour {
 		} 
 		if (Mathf.Abs (playerTransform.position.y) > screenVertBoundary) {
 			playerHasLeft = true;
-			playerTransform.position += Vector3.up * (screenVertBoundary - playerTransform.position.y);
+			playerTransform.position = new Vector3 (playerTransform.position.x, -screenVertBoundary * Mathf.Sign(playerTransform.position.y), playerTransform.position.z);
 		}
 		if (Mathf.Abs (playerTransform.position.x) > screenHorzBoundary) {
 			playerHasLeft = true;
-			playerTransform.position += Vector3.right * (screenHorzBoundary - playerTransform.position.x);
+			playerTransform.position = new Vector3 (-screenHorzBoundary * Mathf.Sign(playerTransform.position.x), playerTransform.position.y, playerTransform.position.z);
 		}
 	}
 

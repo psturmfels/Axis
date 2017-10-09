@@ -2089,7 +2089,7 @@ MonoBehaviour:
   - {fileID: 1921353116081816, guid: 84e2b1e41560e4e31834344049b57aea, type: 2}
   - {fileID: 1023692914458244, guid: fe103eaf643204b438c367fbe91bd391, type: 2}
   enemyProbabilities:
-  - 0
+  - 0.75
   - 1
   ScoreCountText: {fileID: 524078755}
 --- !u!1 &2115396076
