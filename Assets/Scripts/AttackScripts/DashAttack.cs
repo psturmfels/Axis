@@ -12,6 +12,7 @@ public class DashAttack : MonoBehaviour {
 	private bool isDashing = false;
 	private float dashIncrement = 350.0f;
 	private Vector3 dashDestination;
+	private AudioClip warpClip;
 
 	void Start() {
 		ttp = GetComponent<TurnTowardPoint> ();
@@ -20,6 +21,7 @@ public class DashAttack : MonoBehaviour {
 		rec = GetComponent<RegisterEnemyContact> ();
 		keom = GetComponent<KillEnemyOnContact> ();
 		keom.isEnabled = false;
+		warpClip = Resources.Load ("Warp") as AudioClip;
 	}
 
 	void FixedUpdate() {
@@ -42,6 +44,8 @@ public class DashAttack : MonoBehaviour {
 	}
 
 	public void StartDash(GameObject projection) {
+		AudioSource.PlayClipAtPoint (warpClip, Camera.main.transform.position, 0.7f);
+
 		rec.EnableInvinciblePermanent ();
 		keom.isEnabled = true;
 		rb.velocity = Vector3.zero;

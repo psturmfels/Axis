@@ -6,13 +6,18 @@ public class CircleAttack : MonoBehaviour {
 	public GameObject CircleAttackObject;
 	private float attackSpeedModifier = 8.0f;
 	private RegisterEnemyContact rec;
+	private AudioClip blastClip; 
 
 	void Start() { 
 		rec = GetComponent<RegisterEnemyContact> ();
+		blastClip = Resources.Load ("blast") as AudioClip;
 	}
 
 	public void StartCircleAttack(Vector3 maxDims, Vector3 growSpeeds) {
+		AudioSource.PlayClipAtPoint (blastClip, Camera.main.transform.position, 0.4f);
+
 		rec.EnableInvincible ();
+
 		GameObject circleAttackObject = Instantiate (CircleAttackObject) as GameObject;
 		CircleAttackGrow cg = circleAttackObject.GetComponent<CircleAttackGrow> ();
 		cg.maxDims = maxDims;
