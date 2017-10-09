@@ -11,6 +11,7 @@ TagManager:
   - AttackIndicator
   - EnemySpawner
   - ProjectionContainer
+  - EnemyContainer
   layers:
   - Default
   - TransparentFX

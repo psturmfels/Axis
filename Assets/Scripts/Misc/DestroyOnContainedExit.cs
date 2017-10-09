@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DestroyOnContainedExit : MonoBehaviour {
 	public string containerTag;
+	public bool shouldFade = true;
 
 	void OnTriggerExit(Collider other) {
 		if (other.CompareTag (containerTag)) {
@@ -13,14 +14,18 @@ public class DestroyOnContainedExit : MonoBehaviour {
 			if (GetComponent<ConstantForwardMotion> () != null) {
 				GetComponent<ConstantForwardMotion> ().enabled = false;
 			}
-			FadeOut fo = gameObject.AddComponent<FadeOut> ();
-			fo.multiColored = false;
-			fo.alphaFadeRate = 0.05f;
+			if (shouldFade) {
+				FadeOut fo = gameObject.AddComponent<FadeOut> ();
+				fo.multiColored = false;
+				fo.alphaFadeRate = 0.05f;
 
-			foreach (Transform child in transform) {
-				FadeOut childFo = child.gameObject.AddComponent<FadeOut> ();
-				childFo.multiColored = false;
-				childFo.alphaFadeRate = 0.05f;
+				foreach (Transform child in transform) {
+					FadeOut childFo = child.gameObject.AddComponent<FadeOut> ();
+					childFo.multiColored = false;
+					childFo.alphaFadeRate = 0.05f;
+				}
+			} else {
+				Destroy (gameObject);
 			}
 		}
 	}
