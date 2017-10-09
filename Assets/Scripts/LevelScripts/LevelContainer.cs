@@ -7,6 +7,8 @@ public class LevelContainer : MonoBehaviour {
 	public Transform playerTransform;
 	public SpawnGhostShip spawner;
 
+	private float screenVertBoundary = 2550.0f;
+	private float screenHorzBoundary = 4550.0f;
 	private float containHorzBoundary = 3700.0f;
 	private float containVertBoundary = 1700.0f;
 	private bool playerHasLeft;
@@ -32,6 +34,14 @@ public class LevelContainer : MonoBehaviour {
 			} else if (playerTransform.position.x <= -containHorzBoundary) {
 				playerBody.AddExplosionForce (gravityForce * playerBody.position.x, playerTransform.position + Vector3.left * 500.0f, float.MaxValue, 0.0f, ForceMode.Force);
 			}
+		} 
+		if (Mathf.Abs (playerTransform.position.y) > screenVertBoundary) {
+			playerHasLeft = true;
+			playerTransform.position += Vector3.up * (screenVertBoundary - playerTransform.position.y);
+		}
+		if (Mathf.Abs (playerTransform.position.x) > screenHorzBoundary) {
+			playerHasLeft = true;
+			playerTransform.position += Vector3.right * (screenHorzBoundary - playerTransform.position.x);
 		}
 	}
 
