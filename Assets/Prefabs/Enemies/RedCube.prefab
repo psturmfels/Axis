@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114959586358959578}
   - component: {fileID: 114478268087513570}
   - component: {fileID: 114704356364116078}
+  - component: {fileID: 114872882451497388}
   m_Layer: 9
   m_Name: RedCube
   m_TagString: Enemy
@@ -149,8 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77427e6e3a6804bbb813d95b852a074a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathExplosion: {fileID: 1432351149051700, guid: 518bf7c3a1da7411d9e100bc84041d83,
-    type: 2}
 --- !u!114 &114724332253875428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,6 +162,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationIncrementAbs: 2
+--- !u!114 &114872882451497388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1023692914458244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52e3b4e85958463b974d7366ae9eb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  minSpeed: 3000
+  maxSpeed: 8000
+  minRadius: 2000
+  maxRadius: 750
 --- !u!114 &114954838333121156
 MonoBehaviour:
   m_ObjectHideFlags: 1
