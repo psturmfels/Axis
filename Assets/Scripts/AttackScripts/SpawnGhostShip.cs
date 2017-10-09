@@ -14,6 +14,7 @@ public class SpawnGhostShip : MonoBehaviour {
 	private GameObject currentSpawnedShip = null;
 	private CircleAttack ca;
 	private DashAttack da;
+	private AudioClip phase;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,7 @@ public class SpawnGhostShip : MonoBehaviour {
 		ca = GetComponent<CircleAttack> ();
 		da = GetComponent<DashAttack> ();
 		canSpawn = true;
+		phase = Resources.Load ("Phase") as AudioClip;
 	}
 
 	// Update is called once per frame
@@ -38,6 +40,7 @@ public class SpawnGhostShip : MonoBehaviour {
 	}
 
 	void SpawnProjection() {
+		AudioSource.PlayClipAtPoint (phase, Camera.main.transform.position, 0.75f);
 		canSpawn = false;
 		Quaternion shipRotation = Quaternion.Euler (0.0f, 0.0f, transform.rotation.eulerAngles.z);
 		currentSpawnedShip = Instantiate (ghostShipPrefab, transform.position, shipRotation) as GameObject;
