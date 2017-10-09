@@ -37,7 +37,7 @@ public class DashAttack : MonoBehaviour {
 	void EndDash() {
 		im.SetInputEnabled (true);
 		isDashing = false;
-		rec.DisableInvincible ();
+		rec.DisableInvinciblePermanent ();
 		keom.isEnabled = false;
 	}
 

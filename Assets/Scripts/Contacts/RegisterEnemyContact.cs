@@ -11,6 +11,8 @@ public class RegisterEnemyContact : MonoBehaviour {
 	private Health healthObject;
 	private float defaultEnemyDamage = 0.30f;
 
+	private bool isAttacking = false;
+
 	// Use this for initialization
 	void Start () {
 		ttc = GetComponent<TurnToColor> ();
@@ -31,6 +33,9 @@ public class RegisterEnemyContact : MonoBehaviour {
 	}
 
 	public void DisableInvincible() {
+		if (isAttacking) {
+			return;
+		}
 		isInvincible = false;
 	}
 
@@ -39,8 +44,14 @@ public class RegisterEnemyContact : MonoBehaviour {
 		Invoke ("DisableInvincible", invincibleDuration);
 	}
 
+	public void DisableInvinciblePermanent() {
+		isInvincible = false;
+		isAttacking = false;
+	}
+
 	public void EnableInvinciblePermanent() {
 		isInvincible = true;
+		isAttacking = true;
 	}
 
 	void OnCollisionEnter(Collision coll) {
