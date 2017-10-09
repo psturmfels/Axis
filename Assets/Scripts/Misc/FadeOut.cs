@@ -5,13 +5,16 @@ using UnityEngine;
 public class FadeOut : MonoBehaviour {
 	private MeshRenderer mr;
 	public float alphaFadeRate;
+	public bool multiColored = true;
 
 	// Use this for initialization
 	void Start () {
 		mr = GetComponent<MeshRenderer> ();
-		mr.material = new Material (mr.material);
-		Vector3 ColorOffset = Random.insideUnitSphere;
-		mr.material.color = mr.material.color + new Color (ColorOffset.x, ColorOffset.y, ColorOffset.z);
+		if (multiColored) {
+			mr.material = new Material (mr.material);
+			Vector3 ColorOffset = Random.insideUnitSphere;
+			mr.material.color = mr.material.color + new Color (ColorOffset.x, ColorOffset.y, ColorOffset.z);
+		}
 	}
 	
 	// Update is called once per frame

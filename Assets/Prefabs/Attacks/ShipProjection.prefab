@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 64203219757440038}
   - component: {fileID: 54739902374409734}
   - component: {fileID: 114991112078781694}
-  - component: {fileID: 114380234615510056}
   - component: {fileID: 114932109253298436}
   m_Layer: 0
   m_Name: ShipProjection
@@ -185,18 +184,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 4044805d86213467d9dcef812efdc2b9, type: 3}
---- !u!114 &114380234615510056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1404432171620902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b6b68cefc1d744a186a85daf550f262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitTime: 3
 --- !u!114 &114932109253298436
 MonoBehaviour:
   m_ObjectHideFlags: 1

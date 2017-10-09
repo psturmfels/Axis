@@ -28,7 +28,6 @@ public class EnemyDie : MonoBehaviour {
 	private void DisableCollider() {
 		if (GetComponent<BoxCollider> () != null) {
 			GetComponent<BoxCollider> ().enabled = false;
-
 		}
 	}
 }

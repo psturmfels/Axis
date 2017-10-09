@@ -9,7 +9,7 @@ public class TriangleExplosion : MonoBehaviour {
 	private float fadeMin = 0.03f;
 	private float fadeMax = 0.1f;
 
-	public IEnumerator SplitMesh (bool destroy, Vector3 explosionPoint)    {
+	public IEnumerator SplitMesh (bool destroy, Vector3 explosionPoint, bool multiColored=true)    {
 
 		if(GetComponent<MeshFilter>() == null || GetComponent<SkinnedMeshRenderer>() == null) {
 			yield return null;
@@ -75,7 +75,9 @@ public class TriangleExplosion : MonoBehaviour {
 				rb.useGravity = false;
 				rb.angularVelocity = Random.insideUnitSphere * Mathf.PI;
 
+
 				FadeOut fo = GO.AddComponent<FadeOut> ();
+				fo.multiColored = multiColored;
 				fo.alphaFadeRate = Random.Range (fadeMin, fadeMax);
 			}
 		}
