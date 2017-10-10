@@ -13,27 +13,41 @@ public class SpawnGhostShip : MonoBehaviour {
 	private GameObject currentSpawnedShip = null;
 	private CircleAttack ca;
 	private AudioClip phase;
+	private AudioClip errorClip;
 
 	private float spawnMeterMax = 1.0f;
 	private float spawnMeterRemaining = 1.0f;
+	private float spawnMeterRegenRate = 0.01f;
+	private int spawnMeterIndex = 2;
+	private DisplayFloatOnBar dfob;
+
 
 	// Use this for initialization
 	void Start () {
 		im = GetComponent<InputManager> ();
 		rb = GetComponent<Rigidbody> ();
 		ca = GetComponent<CircleAttack> ();
+		dfob = GetComponent<DisplayFloatOnBar> ();
 		canSpawn = true;
 		phase = Resources.Load ("Phase") as AudioClip;
+		errorClip = Resources.Load ("Error") as AudioClip;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (im.GetInputEnabled() && Input.GetKeyDown(spawnKey)) {
-			if (canSpawn && currentSpawnedShip == null) {
+		if (im.GetInputEnabled () && Input.GetKeyDown (spawnKey)) {
+			if (canSpawn && currentSpawnedShip == null && spawnMeterRemaining == spawnMeterMax) {
 				SpawnProjection ();
+				spawnMeterRemaining = 0.0f;
 			} else if (currentSpawnedShip != null) {
 				TeleportToProjection ();
+			} else {
+				AudioSource.PlayClipAtPoint (errorClip, Camera.main.transform.position, 1.0f);
+				dfob.ErrorAtIndex (spawnMeterIndex);
 			}
+		} else {
+			spawnMeterRemaining = Mathf.Min (spawnMeterMax, spawnMeterRemaining + spawnMeterRegenRate);
+			dfob.SetDispValue (spawnMeterRemaining, spawnMeterIndex);
 		}
 	}
 

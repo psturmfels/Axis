@@ -653,6 +653,7 @@ GameObject:
   - component: {fileID: 354729879}
   - component: {fileID: 354729878}
   - component: {fileID: 354729877}
+  - component: {fileID: 354729880}
   m_Layer: 5
   m_Name: DashBar
   m_TagString: Untagged
@@ -668,7 +669,7 @@ RectTransform:
   m_GameObject: {fileID: 354729875}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1369749703}
   m_Father: {fileID: 305658537}
@@ -758,6 +759,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 354729875}
+--- !u!114 &354729880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 354729875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6597071b1cb2b45129c92edef4374673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxShakes: 6
+  shakeIncrement: 2
+  maxDeviation: 4
+  shakeAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &524078753
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,6 +1352,7 @@ MonoBehaviour:
   dispBar:
   - {fileID: 1796180078}
   - {fileID: 354729877}
+  - {fileID: 1107875938}
 --- !u!1 &969332731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1859,7 @@ GameObject:
   - component: {fileID: 1107875940}
   - component: {fileID: 1107875939}
   - component: {fileID: 1107875938}
+  - component: {fileID: 1107875941}
   m_Layer: 5
   m_Name: WarpBar
   m_TagString: Untagged
@@ -1857,7 +1875,7 @@ RectTransform:
   m_GameObject: {fileID: 1107875936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1495209837}
   m_Father: {fileID: 305658537}
@@ -1890,7 +1908,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.3764706, g: 0.50980395, b: 1, a: 0.23529412}
     m_HighlightedColor: {r: 0.3764706, g: 0.50980395, b: 1, a: 0.23529412}
     m_PressedColor: {r: 0.3764706, g: 0.50980395, b: 1, a: 0.23529412}
-    m_DisabledColor: {r: 0.375, g: 0.5086206, b: 1, a: 0.23529412}
+    m_DisabledColor: {r: 0.375, g: 0.5086206, b: 1, a: 0.391}
     m_ColorMultiplier: 2.09
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1947,6 +1965,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1107875936}
+--- !u!114 &1107875941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1107875936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6597071b1cb2b45129c92edef4374673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxShakes: 6
+  shakeIncrement: 2
+  maxDeviation: 4
+  shakeAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &1183523716
 GameObject:
   m_ObjectHideFlags: 0

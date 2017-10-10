@@ -13,11 +13,13 @@ public class DashAttack : MonoBehaviour {
 	private bool isDashing = false;
 	private float dashIncrement = 300.0f;
 	private AudioClip warpClip;
+	private AudioClip errorClip;
 
 	private float dashMax = 1.0f;
 	private float dashRemaining = 1.0f;
 	private float dashConsumptionRate = 0.03f;
 	private float dashRegenRate = 0.02f;
+	private int warpIndex = 1;
 	private DisplayFloatOnBar dfob;
 
 	void Start() {
@@ -28,11 +30,17 @@ public class DashAttack : MonoBehaviour {
 		dfob = GetComponent<DisplayFloatOnBar> ();
 		keom.isEnabled = false;
 		warpClip = Resources.Load ("Warp") as AudioClip;
+		errorClip = Resources.Load ("Error") as AudioClip;
 	}
 
 	void Update () {
 		if (im.GetInputEnabled () && !isDashing && Input.GetKeyDown (dashKey)) {
-			StartDash ();
+			if (dashRemaining > 0.0f) {
+				StartDash ();
+			} else {
+				AudioSource.PlayClipAtPoint (errorClip, Camera.main.transform.position, 1.0f);
+				dfob.ErrorAtIndex (warpIndex);
+			}
 		} else if (isDashing && Input.GetKeyUp (dashKey)) {
 			EndDash ();
 		}
@@ -48,7 +56,7 @@ public class DashAttack : MonoBehaviour {
 			Vector3 dashDirection = transform.up.normalized * dashIncrement;
 			transform.position = transform.position + dashDirection;
 			dashRemaining = Mathf.Max(dashRemaining - dashConsumptionRate, 0.0f);
-			dfob.SetDispValue (dashRemaining, 1);
+			dfob.SetDispValue (dashRemaining, warpIndex);
 		}
 	}
 
@@ -71,6 +79,6 @@ public class DashAttack : MonoBehaviour {
 
 	public void addToDashMeter() {
 		dashRemaining = Mathf.Min (dashRemaining + dashRegenRate, dashMax);
-		dfob.SetDispValue (dashRemaining, 1);
+		dfob.SetDispValue (dashRemaining, warpIndex);
 	}
 }
