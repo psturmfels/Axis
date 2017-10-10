@@ -4,55 +4,73 @@ using UnityEngine;
 
 public class DashAttack : MonoBehaviour {
 	public GameObject shipResidual;
-	private TurnTowardPoint ttp;
+	public KeyCode dashKey;
+
 	private InputManager im;
 	private Rigidbody rb;
 	private RegisterEnemyContact rec;
 	private KillEnemyOnContact keom; 
 	private bool isDashing = false;
-	private float dashIncrement = 350.0f;
-	private Vector3 dashDestination;
+	private float dashIncrement = 300.0f;
 	private AudioClip warpClip;
 
+	private float dashMax = 1.0f;
+	private float dashRemaining = 1.0f;
+	private float dashConsumptionRate = 0.03f;
+	private float dashRegenRate = 0.02f;
+	private DisplayFloatOnBar dfob;
+
 	void Start() {
-		ttp = GetComponent<TurnTowardPoint> ();
 		im = GetComponent<InputManager> ();
 		rb = GetComponent<Rigidbody> ();
 		rec = GetComponent<RegisterEnemyContact> ();
 		keom = GetComponent<KillEnemyOnContact> ();
+		dfob = GetComponent<DisplayFloatOnBar> ();
 		keom.isEnabled = false;
 		warpClip = Resources.Load ("Warp") as AudioClip;
 	}
 
+	void Update () {
+		if (im.GetInputEnabled () && !isDashing && Input.GetKeyDown (dashKey)) {
+			StartDash ();
+		} else if (isDashing && Input.GetKeyUp (dashKey)) {
+			EndDash ();
+		}
+	}
+
 	void FixedUpdate() {
 		if (isDashing) {
-			if ((transform.position - dashDestination).magnitude < dashIncrement) {
+			if (dashRemaining <= 0.0f) {
 				EndDash ();
-			} else {
-				Instantiate (shipResidual, transform.position, transform.rotation);
-				Vector3 dashDirection = (dashDestination - transform.position).normalized * dashIncrement;
-				transform.position = transform.position + dashDirection;
+				return;
 			}
+			Instantiate (shipResidual, transform.position, transform.rotation);
+			Vector3 dashDirection = transform.up.normalized * dashIncrement;
+			transform.position = transform.position + dashDirection;
+			dashRemaining = Mathf.Max(dashRemaining - dashConsumptionRate, 0.0f);
+			dfob.SetDispValue (dashRemaining, 1);
 		}
 	}
 
 	void EndDash() {
-		im.SetInputEnabled (true);
+		im.SetForwardMotionEnabled (true);
 		isDashing = false;
 		rec.DisableInvinciblePermanent ();
 		keom.isEnabled = false;
 	}
 
-	public void StartDash(GameObject projection) {
+	public void StartDash() {
 		AudioSource.PlayClipAtPoint (warpClip, Camera.main.transform.position, 0.7f);
 
 		rec.EnableInvinciblePermanent ();
 		keom.isEnabled = true;
 		rb.velocity = Vector3.zero;
-		im.SetInputEnabled (false);
-		ttp.SnapTowardPoint (projection.transform.position);
+		im.SetForwardMotionEnabled (false);
 		isDashing = true;
-		dashDestination = projection.transform.position;
-		Destroy (projection);
+	}
+
+	public void addToDashMeter() {
+		dashRemaining = Mathf.Min (dashRemaining + dashRegenRate, dashMax);
+		dfob.SetDispValue (dashRemaining, 1);
 	}
 }

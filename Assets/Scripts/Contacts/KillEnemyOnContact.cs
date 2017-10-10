@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class KillEnemyOnContact : MonoBehaviour {
 	public bool isEnabled = true;
+	private DashAttack da;
+
+	void Awake() {
+		da = GameObject.FindGameObjectWithTag ("Player").GetComponent<DashAttack> ();
+	}
 
 	void OnCollisionEnter(Collision coll) {
 		GameObject other = coll.gameObject;
@@ -17,6 +22,7 @@ public class KillEnemyOnContact : MonoBehaviour {
 	}
 
 	void KillEnemy(GameObject Enemy, Vector3 explosionPosition) {
+		da.addToDashMeter ();
 		Enemy.GetComponent<EnemyDie> ().Die (explosionPosition);
 	}
 }

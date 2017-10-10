@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae2dff73325f473bbd7aa218987a60e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alphaFadeRate: 0.1
+  alphaFadeRate: 0.05
+  multiColored: 1
 --- !u!114 &114783451211622788
 MonoBehaviour:
   m_ObjectHideFlags: 1

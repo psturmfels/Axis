@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class InputRotation : MonoBehaviour {
 	private float rotEps = 0.6f;
-	private float maxRotationSpeed = 8.0f;
-	private float rotationSpeedIncrement = 0.8f;
+	private float maxRotationSpeed = 5.0f;
+	private float rotationSpeedIncrement = 2.5f;
 	private float currentRotationSpeed = 0.0f;
 	private float currentTurnAxis = 1.0f;
 	private RotationHolder rot;
 	private InputManager im;
 	private Vector3 localZAxis;
-
 
 	void Start() {
 		rot = GetComponent<RotationHolder> ();
@@ -20,8 +19,8 @@ public class InputRotation : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		float turnAxis = Input.GetAxis ("Horizontal");
-		if (im.GetInputEnabled () && Mathf.Abs (turnAxis) >= 0.1f) {
+		float turnAxis = Input.GetAxisRaw ("Horizontal");
+		if (im.GetInputEnabled () && Mathf.Abs (turnAxis) >= 0.2f) {
 			currentTurnAxis = Mathf.Sign (turnAxis);
 			rot.SetCurrentTurnAxis (currentTurnAxis);
 
@@ -36,7 +35,7 @@ public class InputRotation : MonoBehaviour {
 			currentRotationSpeed = 0.0f;
 			rot.SetCurrentRotationSpeed (currentRotationSpeed);
 
-			transform.RotateAround (transform.position, localZAxis, -currentRotationSpeed); 
+//				transform.RotateAround (transform.position, localZAxis, -currentRotationSpeed); 
 		}
 	}
 }

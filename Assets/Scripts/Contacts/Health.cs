@@ -5,17 +5,23 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
-	public Scrollbar healthBar;
 	public bool isPlayer = true;
 	public bool shouldRegenerate = true;
 	public float regenerateRate = 0.001f;
-	float currentHealth = 1.0f;
+	private float currentHealth = 1.0f;
+	private DisplayFloatOnBar dfob;
+	private int displayHealthIndex = 0;
+
+	void Start() {
+		dfob = GetComponent < DisplayFloatOnBar> ();
+		dfob.SetDispValue (currentHealth, displayHealthIndex);
+	}
 
 	void Update () {
 		if (shouldRegenerate) {
 			currentHealth = Mathf.Min (currentHealth + regenerateRate, 1.0f);
 		}
-		healthBar.size = currentHealth;
+		dfob.SetDispValue (currentHealth, displayHealthIndex);
 	}
 
 	public void TakeDamage(float damageAmount) {

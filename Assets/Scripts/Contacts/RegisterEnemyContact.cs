@@ -60,4 +60,10 @@ public class RegisterEnemyContact : MonoBehaviour {
 			WasHit (other);
 		}
 	}
+	void OnCollisionStay(Collision coll) {
+		GameObject other = coll.gameObject;
+		if (!isInvincible && other.CompareTag ("Enemy")) {
+			WasHit (other);
+		}
+	}
 }
