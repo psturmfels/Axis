@@ -37,14 +37,26 @@ public class SpawnEnemy : MonoBehaviour {
 			return;
 		}
 
-		float newXPos = Random.Range (spawnXMin, spawnXMax);
-		float newYPos = Random.Range (spawnYMin, spawnYMax);
+		float newXPos = 0.0f;
+		float newYPos = 0.0f; 
+		if (Random.Range (0, 2) == 0) {
+			newXPos = Random.Range (-spawnXMax, spawnXMax);
+			newYPos = Random.Range (spawnYMin, spawnYMax);
+			if (Random.Range (0, 2) == 0) {
+				newYPos = -newYPos;
+			}
+		} else {
+			newXPos = Random.Range (spawnXMin, spawnXMax);
+			newYPos = Random.Range (-spawnYMax, spawnYMax);
+			if (Random.Range (0, 2) == 0) {
+				newXPos = -newXPos;
+			}
+		}
+
 		if (Random.Range (0, 2) == 0) {
 			newXPos = -newXPos;
 		}
-		if (Random.Range (0, 2) == 0) {
-			newYPos = -newYPos;
-		}
+
 		Vector3 newEnemyPosition = new Vector3(newXPos, newYPos, 0.0f);
 
 		GameObject nextEnemy = null;
