@@ -13,11 +13,11 @@ public class InputForwardMotion : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		float vertAxis = Input.GetAxis("Vertical");
+		float vertAxis = Input.GetAxisRaw("Vertical");
 		if (im.GetInputEnabled () && im.GetForwardMotionEnabled() && vertAxis > 0.3f) {
 			rb.AddRelativeForce (Vector3.up * speed, ForceMode.Force);
 		} else {
-			rb.velocity = 0.5f * rb.velocity;
+			rb.velocity = Vector3.zero;
 		}
 	}
 }
