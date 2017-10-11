@@ -14,11 +14,18 @@ public class SpeedUpNearTarget : MonoBehaviour {
 	void Start() {
 		cfm = GetComponent<ConstantForwardMotion> ();
 		if (target == null) {
+			if (GameObject.FindGameObjectWithTag ("Player") == null) {
+				return; 
+			}
 			target = GameObject.FindGameObjectWithTag ("Player").transform;
 		}
 	}
 
 	void FixedUpdate() {
+		if (target == null) {
+			return; 
+		}
+
 		Vector3 difference = target.transform.position - transform.position;
 		if (difference.magnitude < maxRadius) {
 			cfm.speed = maxSpeed;

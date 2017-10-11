@@ -87,15 +87,18 @@ public class TutorialObserver : MonoBehaviour {
 	private bool isWaitingForKeyInput = false;
 	private bool isWaitingForFlagCall = false;
 	private int spawnCubeIndex = 7;
+	private bool isDoingTutorial = true;
 
-	// Use this for initialization
+	public bool GetIsDoingTutorial() {
+		return isDoingTutorial;
+	}
+
 	void Start () {
 		tf = GetComponent<TutorialFader> ();
 		tf.StartFadeIn ();
 		Invoke ("EnableWaitingForKeyInput", waitToGetInputTime);
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if (isWaitingForKeyInput && Input.GetKeyDown (keyInputs [currentTutorialIndex])) {
 			ProgressToNextMessage ();
@@ -112,6 +115,7 @@ public class TutorialObserver : MonoBehaviour {
 		isWaitingForKeyInput = false;
 		isWaitingForFlagCall = false;
 		if (currentTutorialIndex == tutorialMessages.Length - 1) {
+			isDoingTutorial = false;
 			tf.StartFadeOut ();
 		} else {
 			currentTutorialIndex += 1;

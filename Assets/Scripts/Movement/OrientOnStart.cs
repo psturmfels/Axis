@@ -8,6 +8,9 @@ public class OrientOnStart : MonoBehaviour {
 	void Start () {
 		ttp = GetComponent<TurnTowardPoint> ();
 		GameObject ship = GameObject.FindGameObjectWithTag ("Player");
+		if (ship == null) {
+			return;
+		}
 		ttp.SnapTowardPoint (ship.transform.position);
 	}
 }

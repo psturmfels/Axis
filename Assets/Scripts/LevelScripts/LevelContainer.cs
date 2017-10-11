@@ -15,12 +15,11 @@ public class LevelContainer : MonoBehaviour {
 	private float playerMass;
 	private int containerFlagIndex = 4;
 
-	void Start() {
-		
-	}
-
-	// Update is called once per frame
 	void FixedUpdate () {
+		if (playerBody == null) {
+			return;
+		}
+
 		if (playerHasLeft) {
 			float gravityForce = -1.0f * 6.0f;
 			if (playerTransform.position.y >= containVertBoundary) {
@@ -47,6 +46,9 @@ public class LevelContainer : MonoBehaviour {
 	}
 
 	void OnTriggerExit(Collider other) {
+		if (playerBody == null) {
+			return;
+		}
 		if (other.gameObject.CompareTag ("Player")) {
 			playerHasLeft = true;
 			spawner.DisableSpawn ();
@@ -58,6 +60,9 @@ public class LevelContainer : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
+		if (playerBody == null) {
+			return;
+		}
 		if (other.gameObject.CompareTag ("Player")) {
 			playerHasLeft = false;
 			spawner.EnableSpawn ();
