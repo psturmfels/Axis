@@ -38,7 +38,7 @@ public class DashAttack : MonoBehaviour {
 			if (dashRemaining > 0.0f) {
 				StartDash ();
 			} else {
-				AudioSource.PlayClipAtPoint (errorClip, Camera.main.transform.position, 0.4f);
+				AudioSource.PlayClipAtPoint (errorClip, Vector3.back * 500.0f, 0.4f);
 				dfob.ErrorAtIndex (warpIndex);
 			}
 		} else if (isDashing && Input.GetKeyUp (dashKey)) {
@@ -68,7 +68,7 @@ public class DashAttack : MonoBehaviour {
 	}
 
 	public void StartDash() {
-		AudioSource.PlayClipAtPoint (warpClip, Camera.main.transform.position, 0.6f);
+		AudioSource.PlayClipAtPoint (warpClip, Vector3.back * 500.0f, 0.6f);
 
 		rec.EnableInvinciblePermanent ();
 		keom.isEnabled = true;

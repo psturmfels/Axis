@@ -34,7 +34,7 @@ public class EnemyDie : MonoBehaviour {
 
 	private void PlayRandomGlassBreak() {
 		AudioClip glassBreak = Resources.Load (glassBreakBase + Random.Range (1, 7).ToString ()) as AudioClip;
-		AudioSource.PlayClipAtPoint (glassBreak, Camera.main.transform.position, 0.1f);
+		AudioSource.PlayClipAtPoint (glassBreak, Vector3.back * 500.0f, 0.1f);
 	}
 
 	private void DisableCollider() {

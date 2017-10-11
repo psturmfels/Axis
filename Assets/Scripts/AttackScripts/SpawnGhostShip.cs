@@ -17,7 +17,7 @@ public class SpawnGhostShip : MonoBehaviour {
 
 	private float spawnMeterMax = 1.0f;
 	private float spawnMeterRemaining = 1.0f;
-	private float spawnMeterRegenRate = 0.005f;
+	private float spawnMeterRegenRate = 0.006f;
 	private int spawnMeterIndex = 2;
 	private DisplayFloatOnBar dfob;
 
@@ -42,7 +42,7 @@ public class SpawnGhostShip : MonoBehaviour {
 			} else if (currentSpawnedShip != null) {
 				TeleportToProjection ();
 			} else {
-				AudioSource.PlayClipAtPoint (errorClip, Camera.main.transform.position, 0.4f);
+				AudioSource.PlayClipAtPoint (errorClip, Vector3.back * 500.0f, 0.4f);
 				dfob.ErrorAtIndex (spawnMeterIndex);
 			}
 		} else {
@@ -52,7 +52,7 @@ public class SpawnGhostShip : MonoBehaviour {
 	}
 
 	void SpawnProjection() {
-		AudioSource.PlayClipAtPoint (phase, Camera.main.transform.position, 0.65f);
+		AudioSource.PlayClipAtPoint (phase, Vector3.back * 500.0f, 0.65f);
 		canSpawn = false;
 		Quaternion shipRotation = Quaternion.Euler (0.0f, 0.0f, transform.rotation.eulerAngles.z);
 		currentSpawnedShip = Instantiate (ghostShipPrefab, transform.position, shipRotation) as GameObject;

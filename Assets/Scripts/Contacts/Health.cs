@@ -32,7 +32,7 @@ public class Health : MonoBehaviour {
 			currentHealth = 0.0f;
 			Die ();
 		} else {
-			AudioSource.PlayClipAtPoint (damagedClip, Camera.main.transform.position, 0.2f);
+			AudioSource.PlayClipAtPoint (damagedClip, Vector3.back * 500.0f, 0.2f);
 			currentHealth -= damageAmount;
 		}
 	}
@@ -63,6 +63,6 @@ public class Health : MonoBehaviour {
 
 	private void PlayRandomGlassBreak() {
 		AudioClip glassBreak = Resources.Load (glassBreakBase) as AudioClip;
-		AudioSource.PlayClipAtPoint (glassBreak, Camera.main.transform.position, 0.3f);
+		AudioSource.PlayClipAtPoint (glassBreak, Vector3.back * 500.0f, 0.3f);
 	}
 }
