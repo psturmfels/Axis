@@ -117,6 +117,7 @@ public class TutorialObserver : MonoBehaviour {
 		if (currentTutorialIndex == tutorialMessages.Length - 1) {
 			isDoingTutorial = false;
 			tf.StartFadeOut ();
+			GameObject.FindGameObjectWithTag ("EnemySpawner").GetComponent<SpawnEnemy> ().enabled = true;
 		} else {
 			currentTutorialIndex += 1;
 			if (currentTutorialIndex == spawnCubeIndex) {

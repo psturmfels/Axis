@@ -68,6 +68,10 @@ public class SpawnEnemy : MonoBehaviour {
 	}
 
 	public void RegisterDeathAtIndex(int deathIndex) {
+		if (!enabled) {
+			return; 
+		}
+
 		enemiesKilled += 1;
 		ScoreCountText.text = enemiesKilled.ToString ();
 		spawnedEnemies [deathIndex] = null;
