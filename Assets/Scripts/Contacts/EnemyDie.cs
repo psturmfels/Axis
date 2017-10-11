@@ -12,7 +12,9 @@ public class EnemyDie : MonoBehaviour {
 	}
 
 	void Start () {
-		se = GameObject.FindGameObjectWithTag ("EnemySpawner").GetComponent<SpawnEnemy> ();
+		if (GameObject.FindGameObjectWithTag ("EnemySpawner") != null) {
+			se = GameObject.FindGameObjectWithTag ("EnemySpawner").GetComponent<SpawnEnemy> ();
+		}
 	}
 	
 	public void Die(Vector3 explosionPosition) {
@@ -23,7 +25,9 @@ public class EnemyDie : MonoBehaviour {
 
 			StartCoroutine(te.SplitMesh(true, explosionPosition));
 
-			se.RegisterDeathAtIndex (index);
+			if (se != null) {
+				se.RegisterDeathAtIndex (index);
+			}
 			index = -1;		
 		}
 	}

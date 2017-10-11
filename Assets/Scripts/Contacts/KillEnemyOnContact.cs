@@ -23,6 +23,9 @@ public class KillEnemyOnContact : MonoBehaviour {
 
 	void KillEnemy(GameObject Enemy, Vector3 explosionPosition) {
 		da.addToDashMeter ();
+		if (Enemy.GetComponent<RedCubeFlagCall> () != null) {
+			Enemy.GetComponent<RedCubeFlagCall> ().Die ();
+		}
 		Enemy.GetComponent<EnemyDie> ().Die (explosionPosition);
 	}
 }
