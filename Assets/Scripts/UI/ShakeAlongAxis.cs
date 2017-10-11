@@ -31,7 +31,7 @@ public class ShakeAlongAxis : MonoBehaviour {
 				shakeIncrement = -shakeIncrement;
 			}
 			rt.position += shakeAxis * shakeIncrement;
-			if (rt.position == initialPosition) {
+			if (Vector3.Distance(rt.position, initialPosition) < shakeIncrement) {
 				numShakesAccumulated += 1;
 			}
 		}

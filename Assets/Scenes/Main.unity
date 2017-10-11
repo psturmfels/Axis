@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6597071b1cb2b45129c92edef4374673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxShakes: 6
+  maxShakes: 4
   shakeIncrement: 2
   maxDeviation: 4
   shakeAxis: {x: 0, y: 1, z: 0}
@@ -1309,7 +1309,6 @@ MonoBehaviour:
   spawnKey: 32
   ghostShipPrefab: {fileID: 1404432171620902, guid: c31b83e5497ca4408a60c7bf6f8c96be,
     type: 2}
-  reloadTime: 0.5
 --- !u!114 &804913445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,7 +1395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 1
   shouldRegenerate: 1
-  regenerateRate: 0.001
+  regenerateRate: 0.0001
 --- !u!114 &804913452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2033,7 +2032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6597071b1cb2b45129c92edef4374673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxShakes: 6
+  maxShakes: 4
   shakeIncrement: 2
   maxDeviation: 4
   shakeAxis: {x: 0, y: 1, z: 0}

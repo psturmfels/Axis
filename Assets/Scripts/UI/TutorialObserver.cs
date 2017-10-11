@@ -26,9 +26,9 @@ public class TutorialObserver : MonoBehaviour {
 
 		"The moment I have that thought, a strange red cube appears. Is it my friend? I decide to approach it.",
 		"Ouch! As I run away from the ominous platonic solid, I realize that running isn't a sustainable strategy...", 
-		"I recall that I have a warp attack. I decide to use the spacebar to send out a projection...",
+		"I recall that I have a warp attack. I decide to use the spacebar to send out a projection at my enemy.",
 
-		"And I decide to press the space bar again when the projection is near my pursuer.",
+		"Nothing seem to have happened. This time, I decide to press the spacebar a second time when the projection is near my enemy...",
 		"After shattering the red cube, I note that I can only send out a projection when the light blue bar in the bottom left is full.",
 		"Curiously, I recall that I also have a warp drive I can use by pressing 'W'.",
 
