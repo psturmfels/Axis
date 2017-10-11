@@ -14,7 +14,7 @@ public class CircleAttack : MonoBehaviour {
 	}
 
 	public void StartCircleAttack(Vector3 maxDims, Vector3 growSpeeds) {
-		AudioSource.PlayClipAtPoint (blastClip, Camera.main.transform.position, 0.4f);
+		AudioSource.PlayClipAtPoint (blastClip, Camera.main.transform.position, 0.2f);
 
 		rec.EnableInvincible ();
 

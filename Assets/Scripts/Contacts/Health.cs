@@ -8,12 +8,14 @@ public class Health : MonoBehaviour {
 	public bool isPlayer = true;
 	public bool shouldRegenerate = true;
 	public float regenerateRate = 0.001f;
-	private string glassBreakBase = "GlassBreak";
+	private string glassBreakBase = "GlassBreakLong";
 	private float currentHealth = 1.0f;
 	private DisplayFloatOnBar dfob;
 	private int displayHealthIndex = 0;
+	private AudioClip damagedClip;
 
 	void Start() {
+		damagedClip = Resources.Load ("Damaged") as AudioClip;
 		dfob = GetComponent < DisplayFloatOnBar> ();
 		dfob.SetDispValue (currentHealth, displayHealthIndex);
 	}
@@ -30,6 +32,7 @@ public class Health : MonoBehaviour {
 			currentHealth = 0.0f;
 			Die ();
 		} else {
+			AudioSource.PlayClipAtPoint (damagedClip, Camera.main.transform.position, 0.2f);
 			currentHealth -= damageAmount;
 		}
 	}
@@ -59,7 +62,7 @@ public class Health : MonoBehaviour {
 	}
 
 	private void PlayRandomGlassBreak() {
-		AudioClip glassBreak = Resources.Load (glassBreakBase + Random.Range (1, 7).ToString ()) as AudioClip;
-		AudioSource.PlayClipAtPoint (glassBreak, Camera.main.transform.position, 0.1f);
+		AudioClip glassBreak = Resources.Load (glassBreakBase) as AudioClip;
+		AudioSource.PlayClipAtPoint (glassBreak, Camera.main.transform.position, 0.3f);
 	}
 }
