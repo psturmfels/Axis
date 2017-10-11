@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputForwardMotion : MonoBehaviour {
 	private Rigidbody rb;
 	private InputManager im;
+	private bool didInputLastFrame = false;
 	public float speed;
 
 	void Start () {
@@ -16,8 +17,10 @@ public class InputForwardMotion : MonoBehaviour {
 		float vertAxis = Input.GetAxisRaw("Vertical");
 		if (im.GetInputEnabled () && im.GetForwardMotionEnabled() && vertAxis > 0.3f) {
 			rb.AddRelativeForce (Vector3.up * speed, ForceMode.Force);
-		} else {
+			didInputLastFrame = true;
+		} else if (didInputLastFrame) {
 			rb.velocity = Vector3.zero;
+			didInputLastFrame = false;
 		}
 	}
 }
