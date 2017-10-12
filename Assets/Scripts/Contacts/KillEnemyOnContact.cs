@@ -26,6 +26,10 @@ public class KillEnemyOnContact : MonoBehaviour {
 		if (Enemy.GetComponent<RedCubeFlagCall> () != null) {
 			Enemy.GetComponent<RedCubeFlagCall> ().Die ();
 		}
-		Enemy.GetComponent<EnemyDie> ().Die (explosionPosition);
+		if (Enemy.GetComponent<EnemyDie> () != null) {
+			Enemy.GetComponent<EnemyDie> ().Die (explosionPosition);
+		} else if (Enemy.GetComponent<SphereEnemyContact> () != null) {
+			Enemy.GetComponent<SphereEnemyContact> ().TakeDamage (explosionPosition);
+		}
 	}
 }

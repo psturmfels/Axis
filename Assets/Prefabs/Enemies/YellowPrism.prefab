@@ -31,7 +31,7 @@ GameObject:
   - component: {fileID: 114434017928674860}
   - component: {fileID: 114901277972232164}
   - component: {fileID: 114030755205771740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: YellowPrism
   m_TagString: Enemy
   m_Icon: {fileID: 0}

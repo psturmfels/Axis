@@ -7,7 +7,6 @@ public class TurnToColor : MonoBehaviour {
 	private Color original_color;
 	private bool isReturning = false;
 
-
 	// Use this for initialization
 	void Start () {
 		mat = GetComponent<MeshRenderer> ().material;

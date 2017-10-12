@@ -17,7 +17,7 @@ public class SpawnGhostShip : MonoBehaviour {
 
 	private float spawnMeterMax = 1.0f;
 	private float spawnMeterRemaining = 1.0f;
-	private float spawnMeterRegenRate = 0.006f;
+	private float spawnMeterRegenRate = 0.005f;
 	private int spawnMeterIndex = 2;
 	private DisplayFloatOnBar dfob;
 

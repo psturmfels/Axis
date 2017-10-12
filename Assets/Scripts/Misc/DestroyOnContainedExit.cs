@@ -25,6 +25,9 @@ public class DestroyOnContainedExit : MonoBehaviour {
 					childFo.alphaFadeRate = 0.05f;
 				}
 			} else {
+				if (GetComponent<EnemyDie> () != null) {
+					GetComponent<EnemyDie> ().RegisterDeath ();
+				}
 				Destroy (gameObject);
 			}
 		}
