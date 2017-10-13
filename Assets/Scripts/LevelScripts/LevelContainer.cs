@@ -13,7 +13,6 @@ public class LevelContainer : MonoBehaviour {
 	private float containVertBoundary = 1700.0f;
 	private bool playerHasLeft;
 	private float playerMass;
-	private int containerFlagIndex = 4;
 
 	void FixedUpdate () {
 		if (playerBody == null) {
@@ -52,10 +51,6 @@ public class LevelContainer : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Player")) {
 			playerHasLeft = true;
 			spawner.DisableSpawn ();
-			if (GameObject.Find("TutorialPanel") != null) {
-				TutorialObserver to = GameObject.Find("TutorialPanel").GetComponent<TutorialObserver> ();
-				to.InitiateFlagCall (containerFlagIndex);
-			}
 		}
 	}
 
