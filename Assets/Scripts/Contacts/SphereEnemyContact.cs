@@ -6,6 +6,11 @@ public class SphereEnemyContact : MonoBehaviour {
 	private SpawnEnemy se; 
 	private TurnToColor ttc; 
 	private Rigidbody rb;
+	private SplitOnHit soh;
+	private AudioClip grow;
+	private AudioClip SphereHurt;
+	private AudioClip SphereDie; 
+
 
 	private int index = -1;
 	private bool isShrinkDying = false;
@@ -28,8 +33,12 @@ public class SphereEnemyContact : MonoBehaviour {
 	}
 
 	void Start () {
+		grow = Resources.Load ("Grow") as AudioClip;
+		SphereHurt = Resources.Load ("SphereHurt") as AudioClip;
+		SphereDie = Resources.Load ("SphereDie") as AudioClip;
 		ttc = GetComponent<TurnToColor> ();
 		rb = GetComponent<Rigidbody> ();
+		soh = GetComponent<SplitOnHit> ();
 		if (GameObject.FindGameObjectWithTag ("EnemySpawner") != null) {
 			se = GameObject.FindGameObjectWithTag ("EnemySpawner").GetComponent<SpawnEnemy> ();
 		}
@@ -40,7 +49,6 @@ public class SphereEnemyContact : MonoBehaviour {
 			if (transform.localScale.x < shrinkRate ||
 			    transform.localScale.y < shrinkRate ||
 			    transform.localScale.z < shrinkRate) {
-				isShrinkDying = false;
 				Destroy (gameObject);
 			} else {
 				transform.localScale = transform.localScale - Vector3.one * shrinkRate;
@@ -71,6 +79,7 @@ public class SphereEnemyContact : MonoBehaviour {
 	void Die() {
 		DisableCollider ();
 		StartShrinkDie ();
+		AudioSource.PlayClipAtPoint (SphereDie, Vector3.back * 500.0f, 0.6f);
 
 		if (index >= 0) {
 			RegisterDeath ();
@@ -87,14 +96,14 @@ public class SphereEnemyContact : MonoBehaviour {
 			return;
 		}
 		isGrowing = false; 
-		isInvincible = true;
-		Invoke ("DisableInvincible", invincibleSeconds);
+		StartInvincibility ();
 		ttc.ChangeColor (Color.red);
-		ttc.ReturnToOriginalColor();
 
 		if (transform.localScale.x <= minScale) {
 			Die ();
 		} else {
+			AudioSource.PlayClipAtPoint (SphereHurt, Vector3.back * 500.0f, 0.6f);
+			soh.WasHit ();
 			nextScaleTarget = transform.localScale.x - scaleIncrement;
 			isShrinking = true;
 			rb.velocity = Vector3.zero;
@@ -102,11 +111,17 @@ public class SphereEnemyContact : MonoBehaviour {
 		}
 	}
 
+	public void StartInvincibility() {
+		isInvincible = true;
+		Invoke ("DisableInvincible", invincibleSeconds);
+	}
+
 	public void Grow() {
 		if (transform.localScale.x >= maxScale || isInvincible || isShrinking || isShrinkDying || isGrowing) {
 			return;
 		}
 		isGrowing = true;
+		AudioSource.PlayClipAtPoint (grow, Vector3.back * 500.0f, 0.6f);
 		nextScaleTarget = transform.localScale.x + 150.0f;
 	}
 
@@ -117,7 +132,8 @@ public class SphereEnemyContact : MonoBehaviour {
 	public void RegisterDeath() {
 		if (index >= 0) {
 			if (se != null) {
-				se.RegisterDeathAtIndex (index);
+				se.reduceNumSpheres ();
+				se.RegisterDeathAtIndex (index, true);
 				index = -1;
 			}
 		}

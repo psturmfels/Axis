@@ -10,10 +10,12 @@ public class SpawnEnemy : MonoBehaviour {
 	private float minSpawnWait = 0.5f;
 	private float maxSpawnWait = 2.0f;
 	private float spawnXMax = 5000.0f;
-	private float spawnXMin = 4500.0f;
+	//private float spawnXMin = 4500.0f;
 	private float spawnYMax = 3000.0f;
-	private float spawnYMin = 2500.0f;
+	//private float spawnYMin = 2500.0f;
 	private int enemiesKilled = 0;
+	private int numSpheres = 0;
+	private int sphereIndex = 3;
 
 	public int maxEnemies;
 	public GameObject[] enemyPrefabs;
@@ -41,12 +43,12 @@ public class SpawnEnemy : MonoBehaviour {
 		float newYPos = 0.0f; 
 		if (Random.Range (0, 2) == 0) {
 			newXPos = Random.Range (-spawnXMax, spawnXMax);
-			newYPos = Random.Range (spawnYMin, spawnYMax);
+			newYPos = spawnYMax;
 			if (Random.Range (0, 2) == 0) {
 				newYPos = -newYPos;
 			}
 		} else {
-			newXPos = Random.Range (spawnXMin, spawnXMax);
+			newXPos = spawnXMax;
 			newYPos = Random.Range (-spawnYMax, spawnYMax);
 			if (Random.Range (0, 2) == 0) {
 				newXPos = -newXPos;
@@ -63,8 +65,13 @@ public class SpawnEnemy : MonoBehaviour {
 		float enemyChoice = Random.Range (0.0f, 1.0f);
 		for (int i = 0; i < maxEnemies; ++i) {
 			if (enemyChoice < enemyProbabilities [i]) {
-				nextEnemy = Instantiate(enemyPrefabs[i], newEnemyPosition, Quaternion.identity) as GameObject;
-				break;
+				if (i == sphereIndex && numSpheres > 0) {
+					nextEnemy = Instantiate (enemyPrefabs [0], newEnemyPosition, Quaternion.identity) as GameObject;
+					break;
+				} else {
+					nextEnemy = Instantiate (enemyPrefabs [i], newEnemyPosition, Quaternion.identity) as GameObject;
+					break;
+				}
 			}
 		}
 		if (nextEnemy == null) {
@@ -75,17 +82,27 @@ public class SpawnEnemy : MonoBehaviour {
 		currentNumEnemies += 1;
 		int nextIndex = availableIndices.Dequeue ();
 		spawnedEnemies [nextIndex] = nextEnemy;
-		nextEnemy.GetComponent<EnemyDie> ().SetIndex (nextIndex);
+		if (nextEnemy.GetComponent<EnemyDie> () != null) {
+			nextEnemy.GetComponent<EnemyDie> ().SetIndex (nextIndex);
+		} else if (nextEnemy.GetComponent<SphereEnemyContact> () != null) {
+			nextEnemy.GetComponent<SphereEnemyContact> ().SetIndex (nextIndex);
+			numSpheres += 1;
+		}
 		Invoke ("SpawnNextEnemy", Random.Range (minSpawnWait, maxSpawnWait));
 	}
 
-	public void RegisterDeathAtIndex(int deathIndex) {
+	public void reduceNumSpheres() {
+		numSpheres = Mathf.Max (0, numSpheres - 1);
+	}
+
+	public void RegisterDeathAtIndex(int deathIndex, bool killedByPlayer = false) {
 		if (!enabled) {
 			return; 
 		}
-
-		enemiesKilled += 1;
-		ScoreCountText.text = enemiesKilled.ToString ();
+		if (killedByPlayer) {
+			enemiesKilled += 1;
+			ScoreCountText.text = enemiesKilled.ToString ();
+		}
 		spawnedEnemies [deathIndex] = null;
 		currentNumEnemies -= 1;
 		availableIndices.Enqueue (deathIndex);

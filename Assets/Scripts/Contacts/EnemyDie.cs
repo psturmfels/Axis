@@ -37,6 +37,12 @@ public class EnemyDie : MonoBehaviour {
 	public void Die(Vector3 explosionPosition) {
 		if (index >= 0) {
 			DisableCollider ();
+			if (GetComponent<Rigidbody> () != null) {
+				GetComponent<Rigidbody> ().velocity = Vector3.zero;
+			}
+			if (GetComponent<ConstantForwardMotion> () != null) {
+				GetComponent<ConstantForwardMotion> ().speed = 0.0f; 
+			}
 
 			if (shouldShatter) {
 				PlayRandomGlassBreak ();
@@ -46,7 +52,7 @@ public class EnemyDie : MonoBehaviour {
 				StartShrinkDie ();
 			}
 				
-			RegisterDeath ();
+			RegisterDeath (shouldShatter);
 			index = -1;		
 		}
 	}
@@ -55,10 +61,10 @@ public class EnemyDie : MonoBehaviour {
 		isShrinking = true;
 	}
 
-	public void RegisterDeath() {
+	public void RegisterDeath(bool wasKilledByPlayer = false) {
 		if (index >= 0) {
 			if (se != null) {
-				se.RegisterDeathAtIndex (index);
+				se.RegisterDeathAtIndex (index, wasKilledByPlayer);
 			}
 		}
 	}

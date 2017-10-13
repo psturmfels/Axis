@@ -26,7 +26,6 @@ public class RegisterEnemyContact : MonoBehaviour {
 		healthObject.TakeDamage (defaultEnemyDamage);
 
 		ttc.ChangeColor (Color.red);
-		ttc.ReturnToOriginalColor();
 
 		ScreenShakeEffect.Shake ();
 		EnableInvincible ();

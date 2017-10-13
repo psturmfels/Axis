@@ -10,7 +10,7 @@ public class AlternateTargetEnemyShip : MonoBehaviour {
 	private float enemyFocusTimeMin = 1.0f;
 	private float enemyFocusTimeMax = 5.0f;
 
-	void Start () {
+	void Awake () {
 		cft = GetComponent<ConstantFaceTransform> ();
 		Invoke ("SwitchTargets", Random.Range (playerFocusTimeMin, playerFocusTimeMax));
 	}
@@ -24,7 +24,7 @@ public class AlternateTargetEnemyShip : MonoBehaviour {
 		}
 	}
 
-	void SwitchTargets() {
+	public void SwitchTargets() {
 		if (isChasingPlayer) {
 			isChasingPlayer = false; 
 			GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");

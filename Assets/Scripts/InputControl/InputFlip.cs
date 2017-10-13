@@ -17,7 +17,7 @@ public class InputFlip : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (canFlip && im.GetInputEnabled() && Input.GetKeyDown(KeyCode.Q)) {
+		if (canFlip && im.GetInputEnabled() && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.Q))) {
 			StartFlip ();
 		}
 	}

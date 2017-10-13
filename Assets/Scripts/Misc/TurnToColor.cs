@@ -5,25 +5,18 @@ using UnityEngine;
 public class TurnToColor : MonoBehaviour {
 	private Material mat;
 	private Color original_color;
-	private bool isReturning = false;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		mat = GetComponent<MeshRenderer> ().material;
 		original_color = mat.color;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if (isReturning) {
-			ProcessColor ();
-		}
+	void FixedUpdate () {
+		ProcessColor ();
 	}
 
 	void ProcessColor() {
-		if (mat.color == original_color) {
-			isReturning = false;
-		}
 		mat.color = Color.Lerp(mat.color, original_color, 0.1f);
 	}
 
@@ -31,7 +24,11 @@ public class TurnToColor : MonoBehaviour {
 		mat.color = newColor;
 	}
 
-	public void ReturnToOriginalColor() {
-		isReturning = true;
+	public void ChangeOriginalColor(Color newColor) {
+		original_color = newColor;
+	}
+
+	public Color GetOriginalColor() {
+		return original_color;
 	}
 }

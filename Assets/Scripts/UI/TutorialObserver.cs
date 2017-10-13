@@ -18,13 +18,13 @@ public class TutorialObserver : MonoBehaviour {
 		"I wake up, alone in the vastness of space. But I do notice that I can use the left arrow key to turn counter clockwise.",
 		"Unsurprisingly, the right arrow key seems to allow me to turn clockwise.",
 		"How odd. I wonder to myself if I can move forward as well. Perhaps the up arrow key would give me the desired result.", 
-		"I also notice that I can flip around using the 'Q' key, although I can't yet deduce why that would be better than turning.",
+		"I also notice that I can flip around with the down arrow key, but I can't yet deduce why that would be better than turning.",
 
 		"Am I trapped here, in this region of space? I endeavor to find out by attempting to leave the screen boundary.",
 		"My efforts to escape are futile.",
 		"Why was I put here? What does it mean? Am I alone?",
 
-		"The moment I have that thought, a strange red cube appears. Is it my friend? I decide to approach it.",
+		"The moment I have that thought, a strange red cube appears. Is it here to help me? I decide to approach it.",
 		"Ouch! As I run away from the ominous platonic solid, I realize that running isn't a sustainable strategy...", 
 		"I recall that I have a warp attack. I decide to use the spacebar to send out a projection at my enemy.",
 
@@ -62,7 +62,7 @@ public class TutorialObserver : MonoBehaviour {
 		KeyCode.LeftArrow,
 		KeyCode.RightArrow,
 		KeyCode.UpArrow,
-		KeyCode.Q,
+		KeyCode.DownArrow,
 
 		KeyCode.None,
 		KeyCode.None,
