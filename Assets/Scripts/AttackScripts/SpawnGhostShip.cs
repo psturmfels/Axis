@@ -14,6 +14,7 @@ public class SpawnGhostShip : MonoBehaviour {
 	private CircleAttack ca;
 	private AudioClip phase;
 	private AudioClip errorClip;
+	private AudioClip ready;
 
 	private float spawnMeterMax = 1.0f;
 	private float spawnMeterRemaining = 1.0f;
@@ -31,6 +32,7 @@ public class SpawnGhostShip : MonoBehaviour {
 		canSpawn = true;
 		phase = Resources.Load ("Phase") as AudioClip;
 		errorClip = Resources.Load ("Error") as AudioClip;
+		ready = Resources.Load ("Ready") as AudioClip;
 	}
 
 	// Update is called once per frame
@@ -46,6 +48,9 @@ public class SpawnGhostShip : MonoBehaviour {
 				dfob.ErrorAtIndex (spawnMeterIndex);
 			}
 		} else {
+			if (spawnMeterRemaining < 1.0f && spawnMeterRemaining + spawnMeterRegenRate >= 1.0f) {
+				AudioSource.PlayClipAtPoint (ready, Vector3.back * 500.0f, 0.35f);
+			}
 			spawnMeterRemaining = Mathf.Min (spawnMeterMax, spawnMeterRemaining + spawnMeterRegenRate);
 			dfob.SetDispValue (spawnMeterRemaining, spawnMeterIndex);
 		}
