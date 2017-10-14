@@ -12,12 +12,14 @@ public class Health : MonoBehaviour {
 	private float currentHealth = 1.0f;
 	private DisplayFloatOnBar dfob;
 	private int displayHealthIndex = 0;
+	private int displayMiniHealthIndex = 3;
 	private AudioClip damagedClip;
 
 	void Start() {
 		damagedClip = Resources.Load ("Damaged") as AudioClip;
 		dfob = GetComponent < DisplayFloatOnBar> ();
 		dfob.SetDispValue (currentHealth, displayHealthIndex);
+		dfob.SetDispValue (currentHealth, displayMiniHealthIndex);
 	}
 
 	void Update () {
@@ -25,6 +27,7 @@ public class Health : MonoBehaviour {
 			currentHealth = Mathf.Min (currentHealth + regenerateRate, 1.0f);
 		}
 		dfob.SetDispValue (currentHealth, displayHealthIndex);
+		dfob.SetDispValue (currentHealth, displayMiniHealthIndex);
 	}
 
 	public void TakeDamage(float damageAmount) {

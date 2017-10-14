@@ -13,6 +13,9 @@ public class RegisterEnemyContact : MonoBehaviour {
 
 	private bool isAttacking = false;
 
+	public FadeOut miniHealthBarBackground;
+	public FadeOut miniHealthBar;
+
 	// Use this for initialization
 	void Start () {
 		ttc = GetComponent<TurnToColor> ();
@@ -21,6 +24,10 @@ public class RegisterEnemyContact : MonoBehaviour {
 	}
 
 	void WasHit(GameObject Enemy) {
+		if (miniHealthBarBackground != null) {
+			miniHealthBarBackground.SetAlphaToOne ();
+			miniHealthBar.SetAlphaToOne ();
+		}
 		Vector3 posDiff = transform.position - Enemy.transform.position;
 		rb.AddForce (posDiff.normalized * knockbackStrength, ForceMode.Impulse);
 
