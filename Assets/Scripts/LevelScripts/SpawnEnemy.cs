@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SpawnEnemy : MonoBehaviour {
 	private GameObject[] spawnedEnemies;
@@ -10,20 +9,22 @@ public class SpawnEnemy : MonoBehaviour {
 	private float minSpawnWait = 0.5f;
 	private float maxSpawnWait = 2.0f;
 	private float spawnXMax = 5000.0f;
-	//private float spawnXMin = 4500.0f;
 	private float spawnYMax = 3000.0f;
-	//private float spawnYMin = 2500.0f;
-	private int enemiesKilled = 0;
 	private int numSpheres = 0;
 	private int sphereIndex = 3;
+	private int currentNumEvolves = 0;
+	private ComboTrackerScript cts;
 
 	public int maxEnemies;
+	public int maxNumEvolves;
+	public float timeBetweenEvolves;
 	public GameObject[] enemyPrefabs;
-	public float[] enemyProbabilities;
-	public Text ScoreCountText;
+	public float[] Probabilities;
+	public float[] EvolveRate;
 
 
 	void Start () {
+		cts = GetComponent<ComboTrackerScript> ();
 		spawnedEnemies = new GameObject[maxEnemies];
 		availableIndices = new Queue<int> ();
 		for (int i = 0; i < maxEnemies; ++i) {
@@ -31,6 +32,8 @@ public class SpawnEnemy : MonoBehaviour {
 		}
 		currentNumEnemies = 0;
 		SpawnNextEnemy ();
+		Invoke ("EvolveProbabilities", timeBetweenEvolves);
+
 	}
 
 	void SpawnNextEnemy() {
@@ -63,8 +66,10 @@ public class SpawnEnemy : MonoBehaviour {
 
 		GameObject nextEnemy = null;
 		float enemyChoice = Random.Range (0.0f, 1.0f);
-		for (int i = 0; i < maxEnemies; ++i) {
-			if (enemyChoice < enemyProbabilities [i]) {
+		for (int i = 0; i < Probabilities.Length; ++i) {
+			float enemyProbability = Probabilities [i];
+				
+			if (enemyChoice < enemyProbability) {
 				if (i == sphereIndex && numSpheres > 0) {
 					nextEnemy = Instantiate (enemyPrefabs [0], newEnemyPosition, Quaternion.identity) as GameObject;
 					break;
@@ -95,16 +100,30 @@ public class SpawnEnemy : MonoBehaviour {
 		numSpheres = Mathf.Max (0, numSpheres - 1);
 	}
 
-	public void RegisterDeathAtIndex(int deathIndex, bool killedByPlayer = false) {
+	public void RegisterDeathAtIndex(int deathIndex, int deathScore, bool killedByPlayer = false) {
 		if (!enabled) {
 			return; 
 		}
 		if (killedByPlayer) {
-			enemiesKilled += 1;
-			ScoreCountText.text = enemiesKilled.ToString ();
+			cts.NewEnemyKilled (deathScore);
 		}
 		spawnedEnemies [deathIndex] = null;
 		currentNumEnemies -= 1;
 		availableIndices.Enqueue (deathIndex);
+	}
+
+	void EvolveProbabilities() {
+		currentNumEvolves += 1;
+		for (int i = 0; i < Probabilities.Length; ++i) {
+			if (Probabilities [i] == 1.0f) {
+				Probabilities [i] += EvolveRate [i];
+				break;
+			}
+			Probabilities [i] += EvolveRate [i];
+		}
+			
+		if (currentNumEvolves < maxNumEvolves) {
+			Invoke ("EvolveProbabilities", timeBetweenEvolves);
+		}
 	}
 }

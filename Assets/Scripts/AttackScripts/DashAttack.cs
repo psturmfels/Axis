@@ -18,7 +18,7 @@ public class DashAttack : MonoBehaviour {
 	private float dashMax = 1.0f;
 	private float dashRemaining = 1.0f;
 	private float dashConsumptionRate = 0.03f;
-	private float dashRegenRate = 0.03f;
+	private float dashRegenRate = 0.05f;
 	private int warpIndex = 1;
 	private DisplayFloatOnBar dfob;
 
@@ -64,6 +64,7 @@ public class DashAttack : MonoBehaviour {
 		im.SetForwardMotionEnabled (true);
 		isDashing = false;
 		rec.DisableInvinciblePermanent ();
+		rec.EnableInvincible ();
 		keom.isEnabled = false;
 	}
 

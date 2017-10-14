@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6985294, g: 0.6985294, b: 0.6985294, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -755,7 +755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &573764725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2694,6 +2694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2053651247}
   - component: {fileID: 2053651248}
+  - component: {fileID: 2053651249}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: EnemySpawner
@@ -2720,23 +2721,41 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053651246}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84b21a45176c14a15a0a615513e2638f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentNumEnemies: 0
   maxEnemies: 20
+  maxNumEvolves: 8
+  timeBetweenEvolves: 20
   enemyPrefabs:
   - {fileID: 1921353116081816, guid: 84e2b1e41560e4e31834344049b57aea, type: 2}
   - {fileID: 1023692914458244, guid: fe103eaf643204b438c367fbe91bd391, type: 2}
   - {fileID: 1853214499708198, guid: 47a684f97c10549e1843782c5c5dfe15, type: 2}
   - {fileID: 1685027067247756, guid: 7d47f2d348ade46138ff8b6e7df7b96d, type: 2}
-  enemyProbabilities:
-  - 0.7
-  - 0.85
-  - 0.95
+  Probabilities:
   - 1
+  - 1
+  - 1
+  - 1
+  EvolveRate:
+  - -0.06
+  - -0.03
+  - -0.01
+  - 0
+--- !u!114 &2053651249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2053651246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1368a78925f34510904c0aef1d33cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   ScoreCountText: {fileID: 524078755}
 --- !u!1 &2115396076
 GameObject:

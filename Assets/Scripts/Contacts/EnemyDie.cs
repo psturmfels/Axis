@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyDie : MonoBehaviour {
+	public int deathScore;
 	public bool shouldShatter = true;
 	private string glassBreakBase = "GlassBreak";
 	private SpawnEnemy se; 
@@ -45,6 +47,7 @@ public class EnemyDie : MonoBehaviour {
 			}
 
 			if (shouldShatter) {
+				displayScoreText ();
 				PlayRandomGlassBreak ();
 				TriangleExplosion te = gameObject.AddComponent<TriangleExplosion> ();
 				StartCoroutine (te.SplitMesh (true, explosionPosition));
@@ -64,7 +67,7 @@ public class EnemyDie : MonoBehaviour {
 	public void RegisterDeath(bool wasKilledByPlayer = false) {
 		if (index >= 0) {
 			if (se != null) {
-				se.RegisterDeathAtIndex (index, wasKilledByPlayer);
+				se.RegisterDeathAtIndex (index, deathScore, wasKilledByPlayer);
 			}
 		}
 	}
@@ -80,5 +83,13 @@ public class EnemyDie : MonoBehaviour {
 		} else if (GetComponent<MeshCollider> () != null) {
 			GetComponent<MeshCollider> ().enabled = false;
 		}
+	}
+
+	private void displayScoreText() {
+		GameObject fadeTextPrefab = Resources.Load ("FadeText") as GameObject;
+		Vector3 textPosition = new Vector3 (transform.position.x + 100.0f, transform.position.y + 100.0f, -450.0f);
+		GameObject WorldCanvas = GameObject.Find ("WorldCanvas");
+		GameObject fadeText = Instantiate (fadeTextPrefab, textPosition, Quaternion.identity, WorldCanvas.transform);
+		fadeText.GetComponent<Text> ().text = "+" + deathScore.ToString ();
 	}
 }

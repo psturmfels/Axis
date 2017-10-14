@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 114070148437083610}
   - component: {fileID: 114415233413328120}
   - component: {fileID: 114282242174189094}
+  - component: {fileID: 114119190381046032}
   m_Layer: 0
   m_Name: PinkSphere
   m_TagString: Enemy
@@ -140,6 +141,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75ea9584532e4a04bc29403865bbe44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathScore: 30
+--- !u!114 &114119190381046032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1685027067247756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0c7b5ce0f794b738c80e97322ad639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 0.35
 --- !u!114 &114187789274173690
 MonoBehaviour:
   m_ObjectHideFlags: 1

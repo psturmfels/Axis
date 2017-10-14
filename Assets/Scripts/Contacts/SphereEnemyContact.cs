@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SphereEnemyContact : MonoBehaviour {
+	public int deathScore;
+
 	private SpawnEnemy se; 
 	private TurnToColor ttc; 
 	private Rigidbody rb;
@@ -77,6 +80,7 @@ public class SphereEnemyContact : MonoBehaviour {
 	}
 
 	void Die() {
+		displayScoreText ();
 		DisableCollider ();
 		StartShrinkDie ();
 		AudioSource.PlayClipAtPoint (SphereDie, Vector3.back * 500.0f, 0.6f);
@@ -133,7 +137,7 @@ public class SphereEnemyContact : MonoBehaviour {
 		if (index >= 0) {
 			if (se != null) {
 				se.reduceNumSpheres ();
-				se.RegisterDeathAtIndex (index, true);
+				se.RegisterDeathAtIndex (index, deathScore, true);
 				index = -1;
 			}
 		}
@@ -143,5 +147,13 @@ public class SphereEnemyContact : MonoBehaviour {
 		if (GetComponent<SphereCollider> () != null) {
 			GetComponent<SphereCollider> ().enabled = false;
 		} 
+	}
+
+	private void displayScoreText() {
+		GameObject fadeTextPrefab = Resources.Load ("FadeText") as GameObject;
+		Vector3 textPosition = new Vector3 (transform.position.x + 100.0f, transform.position.y + 100.0f, -450.0f);
+		GameObject WorldCanvas = GameObject.Find ("WorldCanvas");
+		GameObject fadeText = Instantiate (fadeTextPrefab, textPosition, Quaternion.identity, WorldCanvas.transform);
+		fadeText.GetComponent<Text> ().text = "+" + deathScore.ToString ();
 	}
 }

@@ -9,7 +9,7 @@ public class RegisterEnemyContact : MonoBehaviour {
 	private float knockbackStrength = 8000.0f;
 	private Rigidbody rb;
 	private Health healthObject;
-	private float defaultEnemyDamage = 0.30f;
+//	private float defaultEnemyDamage = 0.30f;
 
 	private bool isAttacking = false;
 
@@ -23,7 +23,9 @@ public class RegisterEnemyContact : MonoBehaviour {
 	void WasHit(GameObject Enemy) {
 		Vector3 posDiff = transform.position - Enemy.transform.position;
 		rb.AddForce (posDiff.normalized * knockbackStrength, ForceMode.Impulse);
-		healthObject.TakeDamage (defaultEnemyDamage);
+
+		float damageTaken = Enemy.GetComponent<EnemyDamageDealt> ().damageDealt;
+		healthObject.TakeDamage (damageTaken);
 
 		ttc.ChangeColor (Color.red);
 

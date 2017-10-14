@@ -10,6 +10,7 @@ public class TutorialObserver : MonoBehaviour {
 	private float spawnYMin = 2500.0f;
 	private int startSpawnIndex = 7;
 	private TutorialFader tf;
+	private bool initiatedFlagCall = false;
 	private enum ProgressType {
 		WaitTime,
 		KeyInput,
@@ -79,6 +80,7 @@ public class TutorialObserver : MonoBehaviour {
 
 	void Update () {
 		if (isWaitingForKeyInput && Input.GetKeyDown (keyInputs [currentTutorialIndex])) {
+			initiatedFlagCall = false;
 			ProgressToNextMessage ();
 		}
 	}
@@ -86,11 +88,17 @@ public class TutorialObserver : MonoBehaviour {
 	public void InitiateFlagCall(int calledIndex) {
 		if (currentTutorialIndex <= calledIndex) {
 			currentTutorialIndex = calledIndex;
+			initiatedFlagCall = false;
 			ProgressToNextMessage ();
+			initiatedFlagCall = true;
 		}
 	}
 
- 	void ProgressToNextMessage() {
+	void ProgressToNextMessage() {
+		if (initiatedFlagCall) {
+			return;
+		}
+
 		isWaitingForKeyInput = false;
 		if (currentTutorialIndex == tutorialMessages.Length - 1) {
 			isDoingTutorial = false;

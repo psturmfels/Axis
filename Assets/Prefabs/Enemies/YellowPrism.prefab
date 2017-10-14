@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 114434017928674860}
   - component: {fileID: 114901277972232164}
   - component: {fileID: 114030755205771740}
+  - component: {fileID: 114151946517555934}
   m_Layer: 9
   m_Name: YellowPrism
   m_TagString: Enemy
@@ -128,6 +129,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77427e6e3a6804bbb813d95b852a074a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathScore: 10
+  shouldShatter: 1
+--- !u!114 &114151946517555934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1853214499708198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0c7b5ce0f794b738c80e97322ad639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 0.3
 --- !u!114 &114218798936608152
 MonoBehaviour:
   m_ObjectHideFlags: 1

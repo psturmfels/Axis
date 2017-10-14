@@ -10,7 +10,7 @@ public class SceneLoader : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (resetKey)) {
-			SceneManager.LoadScene ("Main");
+			LoadTutorialScene ();
 		}
 	}
 

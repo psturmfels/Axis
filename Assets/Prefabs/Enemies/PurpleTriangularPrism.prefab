@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114130376678144388}
   - component: {fileID: 114932061591219518}
   - component: {fileID: 114105165712349150}
+  - component: {fileID: 114353589805849170}
   m_Layer: 9
   m_Name: PurpleTriangularPrism
   m_TagString: Enemy
@@ -153,6 +154,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77427e6e3a6804bbb813d95b852a074a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathScore: 1
+  shouldShatter: 1
+--- !u!114 &114353589805849170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1921353116081816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0c7b5ce0f794b738c80e97322ad639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 0.1
 --- !u!114 &114355109842165256
 MonoBehaviour:
   m_ObjectHideFlags: 1
