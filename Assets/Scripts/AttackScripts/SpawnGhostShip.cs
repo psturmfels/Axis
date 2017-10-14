@@ -51,7 +51,7 @@ public class SpawnGhostShip : MonoBehaviour {
 			if (spawnMeterRemaining < 1.0f && spawnMeterRemaining + spawnMeterRegenRate >= 1.0f) {
 				AudioSource.PlayClipAtPoint (ready, Vector3.back * 500.0f, 0.35f);
 			}
-			spawnMeterRemaining = Mathf.Min (spawnMeterMax, spawnMeterRemaining + spawnMeterRegenRate);
+			spawnMeterRemaining = Mathf.Min (spawnMeterMax, spawnMeterRemaining + spawnMeterRegenRate * Time.timeScale);
 			dfob.SetDispValue (spawnMeterRemaining, spawnMeterIndex);
 		}
 	}

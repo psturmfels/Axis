@@ -24,7 +24,7 @@ public class Health : MonoBehaviour {
 
 	void Update () {
 		if (shouldRegenerate) {
-			currentHealth = Mathf.Min (currentHealth + regenerateRate, 1.0f);
+			currentHealth = Mathf.Min (currentHealth + regenerateRate * Time.timeScale , 1.0f);
 		}
 		dfob.SetDispValue (currentHealth, displayHealthIndex);
 		dfob.SetDispValue (currentHealth, displayMiniHealthIndex);
