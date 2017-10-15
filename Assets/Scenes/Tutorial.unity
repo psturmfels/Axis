@@ -2288,7 +2288,7 @@ MonoBehaviour:
   gameOverText: {fileID: 1993746237}
   cts: {fileID: 2053651249}
   backgroundMusic: {fileID: 780737230}
-  gameOverJingle: {fileID: 8300000, guid: d619d850a4eca42fea02ec7333968a43, type: 3}
+  gameOverJingle: {fileID: 8300000, guid: 83bf1560854184569b0351a93e6c62f2, type: 3}
 --- !u!1 &1077441505
 GameObject:
   m_ObjectHideFlags: 0

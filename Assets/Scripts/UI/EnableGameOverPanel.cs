@@ -16,7 +16,7 @@ public class EnableGameOverPanel : MonoBehaviour {
 	}
 
 	void EnablePanel() {
-		AudioSource.PlayClipAtPoint (gameOverJingle, Vector3.back * 500.0f, 0.3f);
+		AudioSource.PlayClipAtPoint (gameOverJingle, Vector3.back * 500.0f, 0.5f);
 		gameOverText.text = "Game Over\nYour Score:\n" + cts.GetCurrentScore ();
 		gameOverPanel.SetActive(true);
 	}
