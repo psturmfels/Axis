@@ -3132,7 +3132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentNumEnemies: 0
   maxEnemies: 20
-  maxNumEvolves: 8
+  maxNumEvolves: 10
   timeBetweenEvolves: 20
   enemyPrefabs:
   - {fileID: 1921353116081816, guid: 84e2b1e41560e4e31834344049b57aea, type: 2}

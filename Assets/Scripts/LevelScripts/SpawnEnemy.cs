@@ -6,8 +6,6 @@ public class SpawnEnemy : MonoBehaviour {
 	private GameObject[] spawnedEnemies;
 	public int currentNumEnemies;
 	private Queue<int> availableIndices;
-	private float minSpawnWait = 0.5f;
-	private float maxSpawnWait = 2.0f;
 	private float spawnXMax = 5000.0f;
 	private float spawnYMax = 3000.0f;
 	private int numSpheres = 0;
@@ -36,9 +34,13 @@ public class SpawnEnemy : MonoBehaviour {
 
 	}
 
+	private float getNextSpawnTime() {
+		return 0.3f - 1.1f * Mathf.Log (1.0f - Random.Range (0.0f, 0.98f));
+	}
+
 	void SpawnNextEnemy() {
 		if (currentNumEnemies >= maxEnemies) {
-			Invoke ("SpawnNextEnemy", Random.Range (minSpawnWait, maxSpawnWait));
+			Invoke ("SpawnNextEnemy", getNextSpawnTime ());
 			return;
 		}
 
@@ -80,7 +82,7 @@ public class SpawnEnemy : MonoBehaviour {
 			}
 		}
 		if (nextEnemy == null) {
-			Invoke ("SpawnNextEnemy", Random.Range (minSpawnWait, maxSpawnWait));
+			Invoke ("SpawnNextEnemy", getNextSpawnTime ());
 			return;
 		}
 
@@ -93,7 +95,7 @@ public class SpawnEnemy : MonoBehaviour {
 			nextEnemy.GetComponent<SphereEnemyContact> ().SetIndex (nextIndex);
 			numSpheres += 1;
 		}
-		Invoke ("SpawnNextEnemy", Random.Range (minSpawnWait, maxSpawnWait));
+		Invoke ("SpawnNextEnemy", getNextSpawnTime ());
 	}
 
 	public void reduceNumSpheres() {
