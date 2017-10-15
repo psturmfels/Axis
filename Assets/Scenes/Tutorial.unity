@@ -908,7 +908,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Paused \xAF\\_(\u30C4)_/\xAF\nPress E to unpause"
+  m_Text: 'Press E to unpause
+
+    Press 1 to toggle all sound
+
+    Press 2 to toggle music
+
+    Press 3 to change music'
 --- !u!222 &525270042
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -963,7 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.627451}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1002,7 +1008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &573764725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1417,7 +1423,7 @@ GameObject:
   - component: {fileID: 761858163}
   - component: {fileID: 761858166}
   m_Layer: 5
-  m_Name: MenuButton
+  m_Name: TutorialButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1552,7 +1558,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 780737230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 295.21686, y: -113.98726, z: 31.783691}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1316028567}
@@ -2019,7 +2025,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0e18a8100c5174983b2b01b1457999bc, type: 3}
-    m_FontSize: 40
+    m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -2030,7 +2036,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Menu
+  m_Text: Tutorial
 --- !u!222 &1013303464
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2281,6 +2287,8 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1964641762}
   gameOverText: {fileID: 1993746237}
   cts: {fileID: 2053651249}
+  backgroundMusic: {fileID: 780737230}
+  gameOverJingle: {fileID: 8300000, guid: d619d850a4eca42fea02ec7333968a43, type: 3}
 --- !u!1 &1077441505
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,7 +2727,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1316028566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -295.21686, y: 113.98726, z: -31.783691}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 780737231}
@@ -2872,6 +2880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1417039929}
   - component: {fileID: 1417039930}
+  - component: {fileID: 1417039931}
   m_Layer: 0
   m_Name: AudioListener
   m_TagString: Untagged
@@ -2886,7 +2895,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1417039928}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 295.21686, y: -113.98726, z: -468.2163}
+  m_LocalPosition: {x: 0, y: 0, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1316028567}
@@ -2899,6 +2908,18 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1417039928}
   m_Enabled: 1
+--- !u!114 &1417039931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1417039928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70885407872b74e9ca6ac138aada49db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioToggle: 49
 --- !u!1 &1478052394
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,7 +3536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b270dad10eca455dbb693aeefde51ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetKey: 49
+  resetKey: 54
   fadePanel: {fileID: 1084879732}
 --- !u!114 &1847709385
 MonoBehaviour:
@@ -4006,7 +4027,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053651246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84b21a45176c14a15a0a615513e2638f, type: 3}
   m_Name: 

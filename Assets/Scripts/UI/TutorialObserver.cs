@@ -8,7 +8,7 @@ public class TutorialObserver : MonoBehaviour {
 	private float spawnXMin = 4500.0f;
 	private float spawnYMax = 3000.0f;
 	private float spawnYMin = 2500.0f;
-	private int startSpawnIndex = 7;
+	private int startSpawnIndex = 6;
 	private TutorialFader tf;
 	private bool initiatedFlagCall = false;
 	private enum ProgressType {
@@ -23,8 +23,7 @@ public class TutorialObserver : MonoBehaviour {
 		"Press it a second time to attack",
 
 		"'W' key activates warp drive",
-		"A tip: the stronger the enemy...",
-		"...the harder it will hit you",
+		"Press 'E' to pause at any time",
 
 		"In the vastness of space...",
 		"...everything is an enemy...",
@@ -38,12 +37,10 @@ public class TutorialObserver : MonoBehaviour {
 		ProgressType.FlagCall,
 
 		ProgressType.KeyInput,
-
-		ProgressType.WaitTime,
-		ProgressType.WaitTime,
-		ProgressType.WaitTime,
 		ProgressType.WaitTime,
 
+		ProgressType.WaitTime,
+		ProgressType.WaitTime,
 		ProgressType.WaitTime,
 		ProgressType.WaitTime
 	};
@@ -54,12 +51,10 @@ public class TutorialObserver : MonoBehaviour {
 		KeyCode.None,
 
 		KeyCode.W,
-
-		KeyCode.None,
-		KeyCode.None,
-		KeyCode.None,
 		KeyCode.None,
 
+		KeyCode.None,
+		KeyCode.None,
 		KeyCode.None,
 		KeyCode.None
 	};
