@@ -54,17 +54,6 @@ public class Health : MonoBehaviour {
 
 			StartCoroutine(te.SplitMesh(true, transform.position));
 
-			if (GameObject.Find ("TutorialPanel") != null) {
-				TutorialObserver to = GameObject.Find ("TutorialPanel").GetComponent<TutorialObserver> ();
-				if (to.GetIsDoingTutorial ()) {
-					if (GameObject.Find ("ResetLevel") != null) {
-						GameObject.Find ("ResetLevel").GetComponent<SceneLoader> ().StartLoadTutorialScene ();
-						return;
-					}
-				}
-			}
-
-
 			gameOverWatcher.StartEnablePanel ();
 			return;
 		}
