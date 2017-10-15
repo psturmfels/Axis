@@ -13,7 +13,11 @@ public class ComboTrackerScript : MonoBehaviour {
 	private Vector3 addedScorePosition = new Vector3 (3500.0f, 2000.0f, -450.0f);
 
 	public Text ScoreCountText;
-	
+
+	public int GetCurrentScore() {
+		return currentScore;
+	}
+
 	void FixedUpdate () {
 		if (isComboing) {
 			accumulatedComboTime += Time.deltaTime;

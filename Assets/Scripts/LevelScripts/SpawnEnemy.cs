@@ -49,6 +49,9 @@ public class SpawnEnemy : MonoBehaviour {
 	}
 
 	void SpawnNextEnemy() {
+		if (GameObject.FindGameObjectWithTag ("Player") == null) {
+			return;
+		}
 		if (currentNumEnemies >= maxEnemies) {
 			Invoke ("SpawnNextEnemy", getNextSpawnTime ());
 			return;

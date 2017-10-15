@@ -8,6 +8,9 @@ public class Health : MonoBehaviour {
 	public bool isPlayer = true;
 	public bool shouldRegenerate = true;
 	public float regenerateRate = 0.001f;
+	public EnableGameOverPanel gameOverWatcher; 
+
+
 	private string glassBreakBase = "GlassBreakLong";
 	private float currentHealth = 1.0f;
 	private DisplayFloatOnBar dfob;
@@ -60,9 +63,9 @@ public class Health : MonoBehaviour {
 					}
 				}
 			}
-			if (GameObject.Find ("ResetLevel") != null) {
-				GameObject.Find ("ResetLevel").GetComponent<SceneLoader> ().StartLoadMainScene ();
-			}
+
+
+			gameOverWatcher.StartEnablePanel ();
 			return;
 		}
 	}

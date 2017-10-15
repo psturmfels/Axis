@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
 	public KeyCode resetKey;
-	private float sceneLoadWaitTime = 4.0f; 
+	public GameObject fadePanel;
+	private float sceneLoadWaitTime = 1.0f; 
 
 	// Update is called once per frame
 	void Update () {
@@ -16,6 +17,8 @@ public class SceneLoader : MonoBehaviour {
 
 	public void StartLoadMainScene() {
 		Invoke ("LoadMainScene", sceneLoadWaitTime);
+		fadePanel.SetActive (true);
+		fadePanel.GetComponent<FadePanelScript> (). StartFadeIn ();
 	}
 
 	void LoadMainScene() {
@@ -23,6 +26,8 @@ public class SceneLoader : MonoBehaviour {
 	}
 
 	public void StartLoadTutorialScene() {
+		fadePanel.SetActive (true);
+		fadePanel.GetComponent<FadePanelScript> (). StartFadeIn ();
 		Invoke ("LoadTutorialScene", sceneLoadWaitTime);
 	}
 
