@@ -19,7 +19,8 @@ public class SpawnEnemy : MonoBehaviour {
 	public GameObject[] enemyPrefabs;
 	public float[] Probabilities;
 	public float[] EvolveRate;
-
+	public KeyCode hardcoreKeycode;
+	private bool hardcoreModeActive = false;
 
 	void Start () {
 		cts = GetComponent<ComboTrackerScript> ();
@@ -31,8 +32,15 @@ public class SpawnEnemy : MonoBehaviour {
 		currentNumEnemies = 0;
 		SpawnNextEnemy ();
 		Invoke ("EvolveProbabilities", timeBetweenEvolves);
-
 	}
+
+
+	void Update() {
+		if (Input.GetKeyDown (hardcoreKeycode)) {
+			hardcoreModeActive = !hardcoreModeActive;
+		}
+	}
+
 
 	private float getNextSpawnTime() {
 		return 0.3f - 1.1f * Mathf.Log (1.0f - Random.Range (0.0f, 0.98f));
@@ -67,20 +75,30 @@ public class SpawnEnemy : MonoBehaviour {
 		Vector3 newEnemyPosition = new Vector3(newXPos, newYPos, 0.0f);
 
 		GameObject nextEnemy = null;
-		float enemyChoice = Random.Range (0.0f, 1.0f);
-		for (int i = 0; i < Probabilities.Length; ++i) {
-			float enemyProbability = Probabilities [i];
+		if (hardcoreModeActive) {
+			int randomIndexChoice = Random.Range (0, enemyPrefabs.Length);
+			if (randomIndexChoice == sphereIndex && numSpheres > 0) {
+				nextEnemy = Instantiate (enemyPrefabs [0], newEnemyPosition, Quaternion.identity) as GameObject;
+			} else {
+				nextEnemy = Instantiate (enemyPrefabs [randomIndexChoice], newEnemyPosition, Quaternion.identity) as GameObject;
+			}
+		} else {
+			float enemyChoice = Random.Range (0.0f, 1.0f);
+			for (int i = 0; i < Probabilities.Length; ++i) {
+				float enemyProbability = Probabilities [i];
 				
-			if (enemyChoice < enemyProbability) {
-				if (i == sphereIndex && numSpheres > 0) {
-					nextEnemy = Instantiate (enemyPrefabs [0], newEnemyPosition, Quaternion.identity) as GameObject;
-					break;
-				} else {
-					nextEnemy = Instantiate (enemyPrefabs [i], newEnemyPosition, Quaternion.identity) as GameObject;
-					break;
+				if (enemyChoice < enemyProbability) {
+					if (i == sphereIndex && numSpheres > 0) {
+						nextEnemy = Instantiate (enemyPrefabs [0], newEnemyPosition, Quaternion.identity) as GameObject;
+						break;
+					} else {
+						nextEnemy = Instantiate (enemyPrefabs [i], newEnemyPosition, Quaternion.identity) as GameObject;
+						break;
+					}
 				}
 			}
 		}
+
 		if (nextEnemy == null) {
 			Invoke ("SpawnNextEnemy", getNextSpawnTime ());
 			return;
@@ -115,6 +133,9 @@ public class SpawnEnemy : MonoBehaviour {
 	}
 
 	void EvolveProbabilities() {
+		if (currentNumEvolves >= maxNumEvolves) {
+			return;
+		}
 		currentNumEvolves += 1;
 		for (int i = 0; i < Probabilities.Length; ++i) {
 			if (Probabilities [i] == 1.0f) {
