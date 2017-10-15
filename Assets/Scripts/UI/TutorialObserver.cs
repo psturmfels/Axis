@@ -28,7 +28,7 @@ public class TutorialObserver : MonoBehaviour {
 		"In the vastness of space...",
 		"...everything is an enemy...",
 		"...except this tutorial panel...",
-		@"...I'm here to help ¯\_(ツ)_/¯"
+		"...I'm here to help :)"
 	};
 	private ProgressType[] tutorialProgressTypes = new ProgressType[] {
 		ProgressType.KeyInput,
