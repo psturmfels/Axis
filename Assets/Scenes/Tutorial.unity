@@ -3310,21 +3310,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentNumEnemies: 0
   maxEnemies: 20
-  maxNumEvolves: 10
-  timeBetweenEvolves: 20
+  maxNumEvolves: 12
+  timeBetweenEvolves: 15
   enemyPrefabs:
   - {fileID: 1921353116081816, guid: 84e2b1e41560e4e31834344049b57aea, type: 2}
   - {fileID: 1023692914458244, guid: fe103eaf643204b438c367fbe91bd391, type: 2}
   - {fileID: 1853214499708198, guid: 47a684f97c10549e1843782c5c5dfe15, type: 2}
+  - {fileID: 1345502667453994, guid: d897d6bc3ee3a4a4f93349c0621a4831, type: 2}
   - {fileID: 1685027067247756, guid: 7d47f2d348ade46138ff8b6e7df7b96d, type: 2}
   Probabilities:
   - 1
   - 1
   - 1
   - 1
+  - 1
   EvolveRate:
-  - -0.06
-  - -0.03
+  - -0.05
+  - -0.035
+  - -0.0225
   - -0.01
   - 0
   hardcoreKeycode: 53

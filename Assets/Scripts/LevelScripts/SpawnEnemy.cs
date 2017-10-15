@@ -9,7 +9,7 @@ public class SpawnEnemy : MonoBehaviour {
 	private float spawnXMax = 5000.0f;
 	private float spawnYMax = 3000.0f;
 	private int numSpheres = 0;
-	private int sphereIndex = 3;
+	private int sphereIndex = 4;
 	private int currentNumEvolves = 0;
 	private float enemyTimeMultiplier = 1.1f;
 	private float timeMultiplierIncrement = 0.05f;
