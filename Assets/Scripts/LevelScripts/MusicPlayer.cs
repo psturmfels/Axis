@@ -23,10 +23,10 @@ public class MusicPlayer : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (musicPauseKey)) {
 			if (musicIsPlaying) {
-				aud.Stop ();
+				aud.Pause ();
 				musicIsPlaying = false;
 			} else {
-				aud.Play ();
+				aud.UnPause ();
 				musicIsPlaying = true;
 			}
 		} else if (Input.GetKeyDown(musicSwitchKey) && musicIsPlaying) {

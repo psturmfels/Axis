@@ -8,7 +8,7 @@ public class TutorialObserver : MonoBehaviour {
 	private float spawnXMin = 4500.0f;
 	private float spawnYMax = 3000.0f;
 	private float spawnYMin = 2500.0f;
-	private int startSpawnIndex = 5;
+	private int startSpawnIndex = 7;
 	private TutorialFader tf;
 	private bool initiatedFlagCall = false;
 	private enum ProgressType {
@@ -23,14 +23,13 @@ public class TutorialObserver : MonoBehaviour {
 		"Press it a second time to attack",
 
 		"'W' key activates warp drive",
+		"A tip: the stronger the enemy...",
+		"...the harder it will hit you",
 
 		"In the vastness of space...",
 		"...everything is an enemy...",
 		"...except this tutorial panel...",
-		@"...I'm here to help ¯\_(ツ)_/¯",
-
-		"A tip: the stronger the enemy...",
-		"...the harder it will hit you"
+		@"...I'm here to help ¯\_(ツ)_/¯"
 	};
 	private ProgressType[] tutorialProgressTypes = new ProgressType[] {
 		ProgressType.KeyInput,
