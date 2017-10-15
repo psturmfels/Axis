@@ -8,7 +8,7 @@ public class TutorialObserver : MonoBehaviour {
 	private float spawnXMin = 4500.0f;
 	private float spawnYMax = 3000.0f;
 	private float spawnYMin = 2500.0f;
-	private int startSpawnIndex = 7;
+	private int startSpawnIndex = 5;
 	private TutorialFader tf;
 	private bool initiatedFlagCall = false;
 	private enum ProgressType {
@@ -17,19 +17,20 @@ public class TutorialObserver : MonoBehaviour {
 		FlagCall
 	}
 	private string[] tutorialMessages = new string[] {
-		"Arrow keys to move yo",
+		"Arrow keys to move",
 		"The red cube is not your friend",
 		"The space bar is your friend",
 		"Press it a second time to attack",
 
 		"'W' key activates warp drive",
-		"It is easy to remember...",
-		"...'Warp drive' starts with 'W'",
 
 		"In the vastness of space...",
 		"...everything is an enemy...",
 		"...except this tutorial panel...",
-		@"...I'm here to help ¯\_(ツ)_/¯"
+		@"...I'm here to help ¯\_(ツ)_/¯",
+
+		"A tip: the stronger the enemy...",
+		"...the harder it will hit you"
 	};
 	private ProgressType[] tutorialProgressTypes = new ProgressType[] {
 		ProgressType.KeyInput,
@@ -38,11 +39,12 @@ public class TutorialObserver : MonoBehaviour {
 		ProgressType.FlagCall,
 
 		ProgressType.KeyInput,
-		ProgressType.WaitTime,
-		ProgressType.WaitTime,
 
 		ProgressType.WaitTime,
 		ProgressType.WaitTime,
+		ProgressType.WaitTime,
+		ProgressType.WaitTime,
+
 		ProgressType.WaitTime,
 		ProgressType.WaitTime
 	};
@@ -53,6 +55,8 @@ public class TutorialObserver : MonoBehaviour {
 		KeyCode.None,
 
 		KeyCode.W,
+
+		KeyCode.None,
 		KeyCode.None,
 		KeyCode.None,
 		KeyCode.None,
