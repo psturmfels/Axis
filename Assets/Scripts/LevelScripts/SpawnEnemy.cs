@@ -11,6 +11,8 @@ public class SpawnEnemy : MonoBehaviour {
 	private int numSpheres = 0;
 	private int sphereIndex = 3;
 	private int currentNumEvolves = 0;
+	private float enemyTimeMultiplier = 1.1f;
+	private float timeMultiplierIncrement = 0.05f;
 	private ComboTrackerScript cts;
 
 	public int maxEnemies;
@@ -43,7 +45,7 @@ public class SpawnEnemy : MonoBehaviour {
 
 
 	private float getNextSpawnTime() {
-		return 0.3f - 1.1f * Mathf.Log (1.0f - Random.Range (0.0f, 0.98f));
+		return 0.3f - enemyTimeMultiplier * Mathf.Log (1.0f - Random.Range (0.0f, 0.98f));
 	}
 
 	void SpawnNextEnemy() {
@@ -136,6 +138,8 @@ public class SpawnEnemy : MonoBehaviour {
 		if (currentNumEvolves >= maxNumEvolves) {
 			return;
 		}
+
+		enemyTimeMultiplier -= timeMultiplierIncrement;
 		currentNumEvolves += 1;
 		for (int i = 0; i < Probabilities.Length; ++i) {
 			if (Probabilities [i] == 1.0f) {
