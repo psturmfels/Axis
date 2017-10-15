@@ -17,11 +17,14 @@ public class TriggerSpeedUpOnEnter : MonoBehaviour {
 	private bool reachedIntermediate = false;
 	private bool isWaitingAtIntermediate = false;
 
+	private GameObject RedCrosshair;
+
 	// Use this for initialization
 	void Start () {
 		ftr = GetComponent<FadeToRed> ();
 		cfm = GetComponent<ConstantForwardMotion> ();
 		cft = GetComponent<ConstantFaceTransform> ();
+		RedCrosshair = Resources.Load ("RedCrosshair") as GameObject;
 	}
 	
 	// Update is called once per frame
@@ -34,13 +37,14 @@ public class TriggerSpeedUpOnEnter : MonoBehaviour {
 				} else {
 					cfm.speed += speedIncrementMax * Mathf.Sign (maxSpeed - cfm.speed);
 				}
-			} else {
+			} else if (!reachedIntermediate) {
 				if (Mathf.Abs (intermediateSpeed - cfm.speed) < speedIncrementIntermediate) {
 					isWaitingAtIntermediate = true;
 					reachedIntermediate = true;
 					cfm.speed = intermediateSpeed;
 					Invoke ("StartSpeedToMax", intermediateWaitTime);
 					Invoke ("StartFadeToRed", intermediateWaitTime * 0.85f);
+
 				} else {
 					cfm.speed += speedIncrementIntermediate * Mathf.Sign (intermediateSpeed - cfm.speed);
 				}
@@ -56,13 +60,17 @@ public class TriggerSpeedUpOnEnter : MonoBehaviour {
 
 	void StartFadeToRed() {
 		ftr.StartFade ();
+		if (cft != null) {
+			cft.enabled = false; 
+		}
+		if (GameObject.FindGameObjectWithTag ("Player") != null) {
+			Vector3 playerPosition = GameObject.FindGameObjectWithTag ("Player").transform.position;
+			Instantiate (RedCrosshair, playerPosition, Quaternion.identity);
+		}
 	}
 
 	void StartSpeedToMax() {
 		isWaitingAtIntermediate = false; 
-		if (cft != null) {
-			cft.enabled = false; 
-		}
 	}
 
 	void StartSpeedUp() {
