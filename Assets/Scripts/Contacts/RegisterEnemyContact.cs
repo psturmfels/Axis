@@ -9,18 +9,28 @@ public class RegisterEnemyContact : MonoBehaviour {
 	private float knockbackStrength = 8000.0f;
 	private Rigidbody rb;
 	private Health healthObject;
-//	private float defaultEnemyDamage = 0.30f;
 
 	private bool isAttacking = false;
+	private bool godModeActive = false; 
 
 	public FadeOut miniHealthBarBackground;
 	public FadeOut miniHealthBar;
+	public KeyCode godModeKey;
 
 	// Use this for initialization
 	void Start () {
 		ttc = GetComponent<TurnToColor> ();
 		rb = GetComponent<Rigidbody> ();
 		healthObject = GetComponent<Health> ();
+	}
+
+	void Update() {
+		if (Input.GetKeyDown (godModeKey)) {
+			godModeActive = !godModeActive;
+			if (godModeActive) {
+				healthObject.TakeDamage (-1.0f);
+			}
+		}
 	}
 
 	void WasHit(GameObject Enemy) {
@@ -32,7 +42,11 @@ public class RegisterEnemyContact : MonoBehaviour {
 		rb.AddForce (posDiff.normalized * knockbackStrength, ForceMode.Impulse);
 
 		float damageTaken = Enemy.GetComponent<EnemyDamageDealt> ().damageDealt;
-		healthObject.TakeDamage (damageTaken);
+		if (godModeActive) {
+			healthObject.TakeDamage (0.0f);
+		} else {
+			healthObject.TakeDamage (damageTaken);
+		}
 
 		ttc.ChangeColor (Color.red);
 

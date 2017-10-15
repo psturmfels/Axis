@@ -35,8 +35,11 @@ public class Health : MonoBehaviour {
 			currentHealth = 0.0f;
 			Die ();
 		} else {
-			AudioSource.PlayClipAtPoint (damagedClip, Vector3.back * 500.0f, 0.2f);
+			if (damageAmount >= 0.0f) {
+				AudioSource.PlayClipAtPoint (damagedClip, Vector3.back * 500.0f, 0.2f);
+			}
 			currentHealth -= damageAmount;
+			currentHealth = Mathf.Min (currentHealth, 1.0f);
 		}
 	}
 
