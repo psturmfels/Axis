@@ -101,6 +101,7 @@ public class TutorialObserver : MonoBehaviour {
 		if (currentTutorialIndex == tutorialMessages.Length - 1) {
 			isDoingTutorial = false;
 			tf.StartFadeOut ();
+			PlayerPrefs.SetInt ("HasDoneTutorial", 1);
 		} else {
 			currentTutorialIndex += 1;
 			if (currentTutorialIndex == startSpawnIndex) {

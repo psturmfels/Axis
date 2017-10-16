@@ -8,7 +8,12 @@ public class SceneLoader : MonoBehaviour {
 	public GameObject fadePanel;
 	private float sceneLoadWaitTime = 1.0f; 
 
-	// Update is called once per frame
+	void Start() {
+		if (SceneManager.GetActiveScene ().name == "Tutorial" && PlayerPrefs.GetInt ("HasDoneTutorial") == 1) {
+			LoadMainScene ();
+		}
+	}
+
 	void Update () {
 		if (Input.GetKeyDown (resetKey)) {
 			LoadTutorialScene ();
@@ -26,6 +31,7 @@ public class SceneLoader : MonoBehaviour {
 	}
 
 	public void StartLoadTutorialScene() {
+		PlayerPrefs.SetInt ("HasDoneTutorial", 0);
 		fadePanel.SetActive (true);
 		fadePanel.GetComponent<FadePanelScript> (). StartFadeIn ();
 		Invoke ("LoadTutorialScene", sceneLoadWaitTime);
