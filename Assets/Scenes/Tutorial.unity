@@ -1899,7 +1899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miniHealthBarBackground: {fileID: 336819369}
   miniHealthBar: {fileID: 1649248656}
-  godModeKey: 52
+  godModeKey: 0
 --- !u!114 &804913448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3538,7 +3538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b270dad10eca455dbb693aeefde51ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetKey: 54
+  resetKey: 0
   fadePanel: {fileID: 1084879732}
 --- !u!114 &1847709385
 MonoBehaviour:
@@ -4056,7 +4056,7 @@ MonoBehaviour:
   - -0.0225
   - -0.01
   - 0
-  hardcoreKeycode: 53
+  hardcoreKeycode: 0
 --- !u!114 &2053651249
 MonoBehaviour:
   m_ObjectHideFlags: 0
