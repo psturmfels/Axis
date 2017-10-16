@@ -1578,7 +1578,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1658,10 +1658,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundMusicChoices:
   - {fileID: 8300000, guid: 1efb8dac2d38d46c69d3ccc338a9746b, type: 3}
-  - {fileID: 8300000, guid: 4bb4cdc7b5a0b476f857e53481eea535, type: 3}
-  - {fileID: 8300000, guid: dfb5b634e476e43a7a82c227ce186f92, type: 3}
-  - {fileID: 8300000, guid: 2ad36ce3795634d15af8faba01a315b6, type: 3}
-  - {fileID: 8300000, guid: 0f54b07c4d2db4154a3ca86a2c4b7ec9, type: 3}
+  - {fileID: 8300000, guid: 5a6f4b07d05534a7ab13b623eddcadf0, type: 3}
+  - {fileID: 8300000, guid: 2434a8aa691434eeeb12dd75e151ffc4, type: 3}
+  - {fileID: 8300000, guid: 0bd876db3092446358c8c0fe1be290ca, type: 3}
+  - {fileID: 8300000, guid: bcc44c955c5c64162b7a3d20cf133ad9, type: 3}
+  - {fileID: 8300000, guid: a1be1cb92624c4c4085cf85d334a636e, type: 3}
   musicPauseKey: 50
   musicSwitchKey: 51
 --- !u!1 &804913432

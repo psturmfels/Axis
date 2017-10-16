@@ -29,7 +29,7 @@ public class MusicPlayer : MonoBehaviour {
 				aud.UnPause ();
 				musicIsPlaying = true;
 			}
-		} else if (Input.GetKeyDown(musicSwitchKey) && musicIsPlaying) {
+		} else if ((Input.GetKeyDown(musicSwitchKey) && musicIsPlaying) || !aud.isPlaying) {
 			PlayNextSong ();
 		}
 	}
