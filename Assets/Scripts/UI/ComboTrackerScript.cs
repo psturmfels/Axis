@@ -32,6 +32,7 @@ public class ComboTrackerScript : MonoBehaviour {
 			displayComboMultiplierAtPlayer ();
 		}
 		displayAddedScore ();
+		Application.ExternalCall("kongregate.stats.submit", "BestCombo", currentComboMeter);
 
 		currentScore += currentComboMeter * runningComboScore;
 		ScoreCountText.text = currentScore.ToString ();
@@ -42,6 +43,7 @@ public class ComboTrackerScript : MonoBehaviour {
 	}
 
 	public void NewEnemyKilled(int deathScore) {
+		Application.ExternalCall("kongregate.stats.submit", "EnemiesKilled", 1);
 		accumulatedComboTime = 0.0f;
 		isComboing = true;
 		currentComboMeter += 1;

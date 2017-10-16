@@ -8,14 +8,18 @@ public class HighScoreText : MonoBehaviour {
 	private int bestHighScore;
 	private Text textObject;
 
-	void Start () {
+	void Awake () {
 		textObject = GetComponent<Text> ();
 		updateScoreText ();
 	}
 
 	public void updateScoreText() {
 		bestHighScore = PlayerPrefs.GetInt ("HighScore");
-		textObject.text = "Your High Score:\n" + bestHighScore.ToString ();
 	}
 
+	void Update() {
+		if (textObject != null) {
+			textObject.text = "Your High Score:\n" + bestHighScore.ToString ();
+		}
+	}
 }

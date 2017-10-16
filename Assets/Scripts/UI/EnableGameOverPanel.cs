@@ -17,10 +17,13 @@ public class EnableGameOverPanel : MonoBehaviour {
 	}
 
 	void EnablePanel() {
-		PlayerPrefs.SetInt ("HighScore", cts.GetCurrentScore ());
-		hst.updateScoreText ();
+		if (cts.GetCurrentScore () > PlayerPrefs.GetInt ("HighScore")) {
+			PlayerPrefs.SetInt ("HighScore", cts.GetCurrentScore ());
+		}
 		AudioSource.PlayClipAtPoint (gameOverJingle, Vector3.back * 500.0f, 0.5f);
-		gameOverText.text = "Game Over\nYour Score:\n" + cts.GetCurrentScore ();
 		gameOverPanel.SetActive(true);
+		hst.updateScoreText ();
+		gameOverText.text = "Game Over\nYour Score:\n" + cts.GetCurrentScore ();
+		Application.ExternalCall ("kongregate.stats.submit", "HighScore", cts.GetCurrentScore ());
 	}
 }
