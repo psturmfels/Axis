@@ -6,6 +6,7 @@ public class MusicPlayer : MonoBehaviour {
 	private AudioSource aud;
 	private int currentAudioIndex = 0;
 	private bool musicIsPlaying = true;
+	private bool hasSwitchedSongs = true;
 
 	public AudioClip[] backgroundMusicChoices;
 	public KeyCode musicPauseKey;
@@ -29,12 +30,13 @@ public class MusicPlayer : MonoBehaviour {
 				aud.UnPause ();
 				musicIsPlaying = true;
 			}
-		} else if ((Input.GetKeyDown(musicSwitchKey) && musicIsPlaying) || (!aud.isPlaying && musicIsPlaying)) {
+		} else if (Input.GetKeyDown(musicSwitchKey) && musicIsPlaying) {
 			PlayNextSong ();
 		}
 	}
 
 	private void PlayNextSong() {
+		CancelInvoke ();
 		aud.Stop ();
 		currentAudioIndex += 1;
 		if (currentAudioIndex >= backgroundMusicChoices.Length) {
@@ -42,6 +44,7 @@ public class MusicPlayer : MonoBehaviour {
 		}
 		aud.clip = backgroundMusicChoices [currentAudioIndex];
 		aud.Play ();
+		Invoke ("PlayNextSong", aud.clip.length);
 	}
 
 	private void shuffleAudioOrder() {
